@@ -194,4 +194,53 @@ switch(age){
   Default:
     statement
 }
-*/ 2hr 1min
+*/
+
+/*
+
+FUNCTION :
+
+Truthy vs Falsy Values in JavaScript
+JavaScript has a unique sense of true and false, called truthy and falsy. Truthy and falsy are used when evaluating decision-criteria that aren't clearly true or false. Let's look at some examples.
+
+let guess = false;
+if (guess) { … } // falsy
+As you would expect, a variable set to false is falsy. The code within the if block is not executed.
+
+let guess = 0;
+if (guess) { … } // falsy
+A value of 0 (zero) is also falsy.
+
+let guess = "";
+if (guess) { … } // falsy
+And "", which is an empty string, is falsy.
+
+let guess;		// undefined
+if (guess) { … } // falsy
+If a variable has not been assigned a value, it is undefined. An undefined variable is falsy. A common coding pattern is to ensure a variable has a value before doing something with that variable using an if statement as shown above.
+
+let guess = null;
+if (guess) { … } // falsy
+A null variable is also falsy.
+
+let guess = Number("four"); // NaN
+if (guess) { … } // falsy
+And if the code attempts to convert a value that is not a number to a number, the result is NaN, which stands for "not a number". Variables that are NaN evaluate to falsy.
+
+Any other values are truthy.
+
+let guess = 4;
+if (guess) { … } // truthy
+
+guess = 'four';
+if (guess) { … } // truthy
+In the first example, the variable is set to a non-zero number, so it is truthy. In the second example, the variable is set to a non-empty string, so it is truthy.
+
+Basically, if the variable value is false, zero, empty, null, undefined, or Nan, it's falsy and the code within the if block is not run.
+
+If the variable value is anything else, such as a number that is not zero, a non-empty string, an array, or an object, it's truthy and the code in the if block is run.
+
+falsy values are : false, 0, "", undefined, null
+truthy values are : true, 11, "a", "0", [], {}
+
+*/
