@@ -244,3 +244,213 @@ falsy values are : false, 0, "", undefined, null
 truthy values are : true, 11, "a", "0", [], {}
 
 */
+
+/* 
+FUNCTION : It is block of code used to perform some specific task given by the programmer.
+
+Function declaration 
+function function_Name(){
+  statement///
+}
+
+Function Call
+function_Call()
+
+
+Function Expression or ANONYMoUS FUNCTION or Callback function: Passing function to a variable. Also a function without a name
+let fun = function(){
+  statement///
+}
+calling function expression or anonymous function
+fun()
+
+
+FUNCTION that return a value .... taking an example of age calculation function
+let ageCalculation = function(birth_year, current_year){
+  return current_year - birth_year;
+}
+let result = ageCalculation(1997, 2023);
+console.log(result)
+
+ARROW FUNCTION (ES6):  ************************************* IMPORTANT
+a) Allows to write function more fast
+b) No need to use 'function' keyword
+c) No need to use parenthesis() in case of single parameter 
+D) No need to use {} brackets if single line code in function
+NOTE: WHILE WRITING {} THEN RETURN statement is mandatory to declare.
+e) No need to use return statement if single line code in function
+
+Example ---> 
+
+let invitation = function (name){
+  console.log(`Welcome ${name} to this event`);
+}
+invitation('coders');
+
+writing the above function using arrow function
+let invitation = name =>`Welcome ${name} to this event`;
+console.log(invitation('coders'));
+
+
+HIGHER ORDER FUNCTION ( passing function as an argument ) : Functions which contain other 
+function to do some task
+a) other function can be argument
+(Callback function)
+b) other function can be inner 
+return value (closure)
+
+CALLBACK FUNCTION 
+let upperCase = (str) => str.toUpperCase();
+let lowerCase = (str) => str.toLowerCase();
+now passing the function as an argument
+let transformer = (str, select_function) => {
+  return select_function(str);
+};
+console.log(transformer('hello', upperCase));
+console.log(transformer('BYE', lowerCase));
+
+CLOSURE
+FUNCTION returning another function:
+let compliment = function (msg) {
+  return function (name) {
+    console.log(`${msg}, ${name}`);
+    return 'samjla ka';
+  };
+};
+let result = compliment('Good Morning');
+console.log(result('Ajay'));
+
+IIMF ( IMMEDIATELY INVOKED FUNCTION EXPRESSION ): function without name ,runs immediately
+now this is expression
+(function(name){
+  console.log('This function will never execute again',name);
+})
+('IIFE');
+
+
+SET TIMEOUT AND SET INTERVAL FUNCTION : 
+setTimeOut --> run function "once" after "interval" of time
+setTimeOut(Function|Code, delay in ms, argument)
+function greeting(name) {
+  console.log(`Good Morning, ${name} Sir`);
+}
+setTimeout(greeting, 7000,"Ajay"); runs only once
+
+setInterval  --> run function repeatedly, starting after the interval of time, then repeating...
+setInterval(Function|Code, delay in ms, argument)
+function greeting(name) {
+  console.log(`Good Morning, ${name} Sir`);
+}
+setInterval(greeting, 3000,"Ajay"); runs after after interval of time
+
+
+HOISTING***************** IMPORTANT
+
+In JavaScript, a variable can be declared after it has been used.
+In other words; a variable can be used before it has been declared.
+Example 1 gives the same result as Example 2:
+
+
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+
+The let and const Keywords
+Variables defined with let and const are hoisted to the top of the block, but not initialized.
+
+Meaning: The block of code is aware of the variable, but it cannot be used until it has been declared.
+
+Using a let variable before it is declared will result in a ReferenceError.
+
+The variable is in a "temporal dead zone" from the start of the block until it is declared:
+
+Example
+This will result in a ReferenceError:
+carName = "Volvo";
+let carName;
+Using a const variable before it is declared, is a syntax error, so the code will simply not run.
+
+Example
+This code will not run.
+
+carName = "Volvo";
+const carName;
+
+Hoisting is allowed for var variable but not for let and const variables.
+
+JavaScript only hoists declarations, not initializations.
+JavaScript Initializations are Not Hoisted
+
+Hoisting is allowed in functions
+test() calling a function before it is declared
+function test(){
+  console.log('This is a test function);
+}
+
+Function expression or arrow function are not allowed for hoisting. for example
+test()
+let test = ()=>{
+  console.log('this function expression is not allowed for hoisting');
+}
+
+NOTE :JavaScript in strict mode does not allow variables to be used if they are not declared.
+
+*/
+
+/*
+OBJECTS
+
+syntax
+let variable_name = {
+  key:"value",
+  key:"value",
+  key:"value",
+}
+
+let car = {
+  color:"black",
+  model:2022,
+  company:"honda"
+}
+
+To retrieve data from object --->
+console.log( car [ 'color'] ); Traditional way
+console.log( car.color ); Generally used method
+let propertyName = "color";
+console.log(car[propertyName]);
+
+Modify the object --->
+car.color = 'orange';
+car['color']='orange';
+
+Delete properties of an object
+delete car.color;
+delete car['color'];
+
+difference between function and method : In javascript when  function is present inside an object is called method
+let person = {
+  ageCalculate : function(birthYear, CurrentYear){
+    return currentYear - birthYear;
+  }
+}
+console.log(person.ageCalculate(1998, 2023));
+
+
+THIS KEYWORD ******* IMPORTANT : 
+In each method we have an ACCESS of special keyword called 'THIS' keyword.
+This keyword represent the current object
+
+let person = {
+  firstName = "prashant",
+  lastName = "mishra",
+  city = "faridpur",
+  birthyear = 2000,
+  Education = "electrical engineer",
+  getSummary = function(){
+    return `${this.firstName} ${this.lastName} lived in ${this.city}. He is ${this.Education} and his birthyear is ${this.birthyear}`
+  } 
+}
+console.log(person.getSummary());
+
+
+Some array's method:
+forEach Method of an array 
+*/
