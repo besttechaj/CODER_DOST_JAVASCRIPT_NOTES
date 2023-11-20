@@ -479,8 +479,7 @@ Math.random(); gives random number
 FUNCTION
 CALL AND APPLY METHOD
 we can manually set the value of "this" keyword using call and apply method 
- */
-
+('use strict');
 let mainPlane = {
   airline: 'flyIndia',
   iatacode: 'FI',
@@ -501,4 +500,22 @@ let mainPlane = {
 mainPlane.book(121, 'abhishek sharma');
 mainPlane.book(134, 'AKASH SINGH KUNTAL');
 console.log(mainPlane.booking);
-// suppose new airline launched of the same group
+// suppose new airline launched of the same group...
+let childPlain = {
+  airline: 'child plane',
+  iatacode: 'CP',
+  booking: [],
+  //here we want to use the same method similar to previous book method without declaring it here ( solution ---> go with call() method )
+};
+let book = mainPlane.book;
+// book(444,"LURIE");// book is a regular function
+//"this" keyword value is "undefined" at least in strict mode
+
+//solution using call method
+// call(target_object, para@, para@)
+book.call(childPlain, 777, 'LENARD ELPISTONE');
+console.log(childPlain);
+//apply method ---> works same but has to put the value inside array
+book.apply(childPlain, [555, 'RAYMOND TAILOR']);
+console.log(childPlain);
+ */
