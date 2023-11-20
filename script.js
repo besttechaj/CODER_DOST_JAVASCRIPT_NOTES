@@ -449,8 +449,56 @@ let person = {
   } 
 }
 console.log(person.getSummary());
-
-
-Some array's method:
-forEach Method of an array 
 */
+/*
+Some array's method:
+a)forEach Method of an array : another type of loop which we used to traverse over the array
+let dishes = ['biryani', 'chole', 'paneer', 'rajma'];
+passing function as a parameter ( ie call back function )
+dishes.forEach((element) => console.log(element));
+
+OBJECT INSIDE ARRAY :
+let blocklist=[ {userName:"abhishek", reason:"abusive content"}, {userName:"tako", reason:"piracy"} ]
+To retrieve all data 
+console.log(blocklist);
+To retrieve only the specific data 
+for(i=0;i<blocklist.length;i++){
+  console.log(`${blocklist[i].name} is blocked due to ${blocklist[i].reason} as reason`);
+}
+
+MATH Object built in object in javascript
+console.log(Math); display all properties present inside math()
+Math.round(number); gives the nearest value after rounding off
+Math.floor(number); gives the nearest lowest value after rounding off
+Math.ceil(number); gives the nearest highest value after rounding off
+Math.trunc(decimalValue); removes the decimal part
+Math.random(); gives random number
+*/
+
+/*
+FUNCTION
+CALL AND APPLY METHOD
+we can manually set the value of "this" keyword using call and apply method 
+ */
+
+let mainPlane = {
+  airline: 'flyIndia',
+  iatacode: 'FI',
+  booking: [],
+  book: function (flightNo, passengerName) {
+    console.log(
+      `${passengerName} Booked flight on ${this.airline} with flight number ${this.iatacode} ${flightNo}`
+    );
+    //updating the flight booking information
+    this.booking.push({
+      flightName: `${this.airline}`,
+      name: `${passengerName}`,
+      flightNumber: `${this.iatacode}-${flightNo}`,
+    });
+  },
+};
+
+mainPlane.book(121, 'abhishek sharma');
+mainPlane.book(134, 'AKASH SINGH KUNTAL');
+console.log(mainPlane.booking);
+// suppose new airline launched of the same group
