@@ -578,4 +578,96 @@ for (let key in car) {
 }
 console.log(x);
  */
-3hr 42 min
+
+/*
+JavaScript HTML DOM
+With the HTML DOM, JavaScript can access and change all the elements of an HTML document.
+
+The HTML DOM (Document Object Model)
+When a web page is loaded, the browser creates a Document Object Model of the page.
+
+The HTML DOM model is constructed as a tree of Objects:
+
+With the object model, JavaScript gets all the power it needs to create dynamic HTML:
+
+JavaScript can change all the HTML elements in the page
+JavaScript can change all the HTML attributes in the page
+JavaScript can change all the CSS styles in the page
+JavaScript can remove existing HTML elements and attributes
+JavaScript can add new HTML elements and attributes
+JavaScript can react to all existing HTML events in the page
+JavaScript can create new HTML events in the page
+
+
+What is the DOM?
+The DOM defines a standard for accessing documents:
+
+"The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+
+The W3C DOM standard is separated into 3 different parts:
+
+Core DOM - standard model for all document types
+XML DOM - standard model for XML documents
+HTML DOM - standard model for HTML documents
+What is the HTML DOM?
+The HTML DOM is a standard object model and programming interface for HTML. It defines:
+
+The HTML elements as objects
+The properties of all HTML elements
+The methods to access all HTML elements
+The events for all HTML elements
+In other words: The HTML DOM is a standard for how to get, change, add, or delete HTML elements.
+
+
+GETTING html element/ element using querySelector/ querySelectorAll respectively.
+
+query selector ---> used to "find"(or select) the html elements you want to target/style. 
+
+querySelector are of two types :
+querySelector : return first element that match Css selector.
+NOTE(CSS SELECTOR--> A CSS selector selects the HTML element(s) you want to style.
+We can divide CSS selectors into five categories:
+
+Simple selectors (select elements based on name, id, class)
+Combinator selectors (select elements based on a specific relationship between them)
+Pseudo-class selectors (select elements based on a certain state)
+Pseudo-elements selectors (select and style a part of an element)
+Attribute selectors (select elements based on an attribute or attribute value)
+)
+
+// access elements using element name
+let result = document.querySelector('p');
+console.log(result);
+querySelectorAll: To get all the matched elements.
+let result2 = document.querySelectorAll('p');
+console.log(result2); 
+result2.forEach(Element=>console.log(Element));
+
+//access element using class name
+let result3 = document.querySelector('.coderdost');
+console.log(result3);
+
+//access elements using id name
+let result4 = document.querySelector('#coders');
+console.log(result4);
+
+//access elements using tagName only
+let result5 = document.getElementsByTagName('p');
+console.log(result5);
+
+// access element by id method
+let result6 = document.getElementById('coders');
+console.log(result6);
+
+//access element using by className method
+let result7 = document.getElementsByClassName('coderdost');
+console.log(result7);
+
+*/
+
+// Updating and changing content
+
+// innerText property : it ignore spaces while displaying result
+let h1;
+
+//innerHTML property : it doesn't ignore spaces while displaying the result
