@@ -518,4 +518,64 @@ console.log(childPlain);
 //apply method ---> works same but has to put the value inside array
 book.apply(childPlain, [555, 'RAYMOND TAILOR']);
 console.log(childPlain);
+
+
+BIND METHOD  : example
+function message() {
+  console.log(`My full name is ${this.firstName} ${this.lastName}`);
+}
+
+let user = {
+  firstName: 'john',
+  lastName: 'paul',
+};
+
+let newMessage = message.bind(user);
+newMessage();
+
+
+OBJECTS/ARRAYS: How "Reference" are passed to variable
+
+let array = [1,2,3,4,5];
+creating a ref for the above array. note that reference and original array points to the same memory location hence if change occur in any one, it will affect the other one also.
+let getRef = array;
+getRef[5]=7 //change the data
+getRef.shift() ; //removing the first element
+console.log('Original array',array);// [2,3,4,5,7]
+console.log('getRef array',getRef);// [2,3,4,5,7]
+NOTE : SIMILAR CONCEPT IS APPLIED FOR OBJECT ALSO
+
+
+PASS BY VALUE : this will create a copy of an array/object
+let arr = [1,2,3,4,5];
+creating another copy of original array hence it will create a new memory
+let getValue = [...arr];
+getValue[6]=8; 
+console.log('Original array',arr);// [2,3,4,5,7]
+console.log('getValue array',getValue);// [2,3,4,5,7,empty,8]   results are different 
+NOTE : SIMILAR CONCEPT IS APPLIED FOR OBJECT ALSO
+let obj1 = {fname:"john",lname:"paul"};
+creating a copy
+let obj2 = {...obj1};
+obj2[1]="kumar";
+if you change in one object then other object will not change
+
+
+FOR - IN LOOP ( Each iteration return a " key " of object ). for-in loop mainly use for object's key
+let car = {
+  company: 'Toyota',
+  model: 2023,
+  color: 'grey',
+};
+// applying for-in loop to get the key only
+for (let key in car) {
+  console.log(key); // model color company
+}
+//applying for-in loop to get the value only
+let x = '';
+for (let key in car) {
+  x = x + car[key];
+}
+console.log(x);
  */
+3hr 42 min
