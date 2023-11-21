@@ -663,11 +663,22 @@ console.log(result6);
 let result7 = document.getElementsByClassName('coderdost');
 console.log(result7);
 
+
+// Updating and changing content *** IMPORTANT PROPERTY
+
+// innerText property :
+// a) It ignore spaces while displaying result
+// b) Retrieve and set content in plain text
+let data = document.querySelector('.content');
+console.log(data.innerText);
+//updating the content
+data.innerText += '<p>Great Coders</p>';
+console.log(data.innerText);
+
+//innerHTML property :
+// a)it doesn't ignore spaces while displaying the result
+// b) Retrieve and set content in html formate
+// update the innerHTML format
+data.innerHTML += '<h3>Great Coders ..</h3>'; //it will add a new element
+
 */
-
-// Updating and changing content
-
-// innerText property : it ignore spaces while displaying result
-let h1;
-
-//innerHTML property : it doesn't ignore spaces while displaying the result
