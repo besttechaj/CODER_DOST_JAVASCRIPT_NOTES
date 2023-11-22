@@ -681,4 +681,27 @@ console.log(data.innerText);
 // update the innerHTML format
 data.innerHTML += '<h3>Great Coders ..</h3>'; //it will add a new element
 
+GETTING AND SETTING ATTRIBUTE OF ELEMENT
+//getting the attribute
+let googleLink = document.querySelector('a');
+console.log(googleLink); // getting the element
+console.log(googleLink.getAttribute('href')); // retrieve link
+//setting the attribute
+googleLink.setAttribute('href', 'fb.com');
+console.log(googleLink.getAttribute('href')); // verifying
+googleLink.innerText = 'Master class of React Js'; // updating the inner text
+console.log(googleLink.innerHTML);
+
+//Adding the style
+let heading = document.querySelector('h1');
+heading.style.color = 'red';
+heading.style.backgroundColor = 'black';
+
+//Add, Remove and Replace the class of element
+let heading = document.querySelector('h1');
+heading.classList.add('newClass'); //Adding the class
+heading.classList.remove('newClass');
+heading.classList.replace('main', 'newClass');
 */
+
+//PARENT, CHILDREN AND SIBLING ELEMENTS
