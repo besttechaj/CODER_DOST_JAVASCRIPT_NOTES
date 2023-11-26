@@ -702,6 +702,92 @@ let heading = document.querySelector('h1');
 heading.classList.add('newClass'); //Adding the class
 heading.classList.remove('newClass');
 heading.classList.replace('main', 'newClass');
-*/
 
 //PARENT, CHILDREN AND SIBLING ELEMENTS
+let parentElement = document.querySelector('.content');
+console.log(parentElement); // parent element
+console.log(parentElement.children); //children
+//we cannot run forEach method on HTML collection so first convert it into array
+console.log(Array.from(parentElement.children)); // return array
+Array.from(parentElement.children).forEach((ele) => {
+  ele.classList.add('coders');
+  console.log(ele);
+});
+
+// trying to get the parent element from child element
+let childElement = document.querySelector('h2');
+console.log(childElement.parentElement); //using built-in parentElement method
+
+
+//find next sibling of the child
+let childElement = document.querySelector('h2');
+console.log(childElement.nextElementSibling); // don't  have next sibling, it was the last
+
+// find the previous/next sibling of any element
+let childElement = document.querySelector('h2');
+console.log(childElement.previousElementSibling);
+
+
+
+//EVENT BASICS ( CLICK EVENT )
+let eventElement = document.querySelector('.clickMe'); //targeting the dom's element
+eventElement.addEventListener('click', () => console.log('Clicked')); // addEventListener(type_of_event, callBack function)
+
+// TRYING TO RETRIEVING THE ELEMENTS AND APPLYING CLICK EVENT ON EACH ELEMENT OF THE LOOP
+let list = document.querySelectorAll('li');
+console.log(list);
+list.forEach((element) => {
+  element.addEventListener('click', (e) => {
+    console.log(e.target);
+    e.target.style.textDecoration = 'line-through';
+  });
+});
+
+
+//ADD AND REMOVE THE ELEMENT using event
+//Adding a new element while clicking the button
+let ul = document.querySelector('ul');
+//Also Event bubbling-->The event continues to bubble, until it reaches the top (the document element).
+ul.addEventListener('click', () => console.log('Event bubbling'));
+let eventElement = document.querySelector('.clickMe'); //targeting the dom's element
+eventElement.addEventListener('click', () => {
+  //creating a new list
+  let li = document.createElement('li');
+  //adding a text inside the list
+  li.textContent = 'tHIS IS A NEW LI';
+  // APPENDING the newly created element in ul
+  ul.append(li); // to add at last
+  ul.prepend(li); // to add at first
+}); // addEventListener(type_of_event, callBack function)
+
+// To remove the element which is clicked inside the list
+let list = document.querySelectorAll('li');
+console.log(list);
+list.forEach((element) => {
+  element.addEventListener('click', (e) => {
+    console.log('Element remove', e.target);
+    e.target.remove();
+  });
+});
+*/
+
+//Event bubbling
+//Adding a new element while clicking the button and removing the element while click on them using event bubbling
+let ul = document.querySelector('ul');
+let eventElement = document.querySelector('.clickMe'); //targeting the dom's element
+eventElement.addEventListener('click', () => {
+  //creating a new list
+  let li = document.createElement('li');
+  //adding a text inside the list
+  li.textContent = 'tHIS IS A NEW LI';
+  // APPENDING the newly created element in ul
+  ul.prepend(li); // to add at first
+});
+//since the bubble event traverse from child to parent we can easily remove any element
+ul.addEventListener('click', (e) => {
+  console.log(e);
+  //nodeName ---> e.target.nodeName (type of property)
+  if (e.target.nodeName === 'LI') {
+    e.target.remove();
+  }
+});
