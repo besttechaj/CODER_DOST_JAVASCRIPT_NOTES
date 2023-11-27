@@ -910,3 +910,54 @@ user.addEventListener('keyup', (e) => {
   }
 });
 */
+
+/*
+//Working with array (simple methods)
+
+let letters = ['a', 'b', 'c', 'd'];
+// reverse() : Mutate the original array*** ---> mutating method
+// console.log(letters.reverse());
+// console.log(letters);
+
+// concat the array ---> non mutating method
+let num = [1, 2, 3, 4, 6];
+let res = letters.concat(num); 
+let res2 = [...letters, ...num];
+console.log(res2);
+console.log(res);
+
+//JOIN METHOD
+let letters = ['a', 'b', 'c', 'd'];
+// join() ---> Non mutating method
+let joined = letters.join('-');
+console.log(joined);
+console.log(typeof joined);
+
+//SLICE METHOD
+//a) used to extract part of array
+//b) Array.slice(startIndex, lastIndex (excluded ))
+//c) return new array of extracted element
+//d)non mutating method
+let num = [12, 23, 34, 46, 2];
+let extractedArray = num.slice(1, 4);
+console.log(extractedArray);
+
+
+//SPLICE METHOD
+//a)  mutating method : mutates the original array
+//b) used to add new elements inside an array
+//c) Array.splice(index, no. of value to be deleted,  ValueToBeAdded)
+//d) return deleted item in the form of array
+//e) slice can be used to add more items inside the original array
+// removing the elements using slice
+let num = [10, 232, 24, 54, 32];
+let updated = num.splice(1, 2, 100, 200);
+console.log(num);
+console.log(updated);
+//adding the elements using slice
+let nums = [22, 33, 44, 55, 66];
+let upgrade = nums.splice(2, 0, 111, 222, 333);
+console.log(nums);
+console.log(upgrade); // only returns the deleted element
+
+*/
