@@ -769,7 +769,9 @@ list.forEach((element) => {
     e.target.remove();
   });
 });
-*/
+
+
+
 
 //Event bubbling
 //Adding a new element while clicking the button and removing the element while click on them using event bubbling
@@ -791,3 +793,120 @@ ul.addEventListener('click', (e) => {
     e.target.remove();
   }
 });
+
+*/
+
+/*
+
+COPY EVENT
+let copyRightElement = document.querySelector('.test1');
+copyRightElement.addEventListener('copy', () =>
+  alert('Link cannot be copied due to security reasons')
+);
+
+//MOUSE MOVE EVENT INSIDE A SPECIFIED AREA
+let mouseLoc = document.querySelector('.box');
+mouseLoc.addEventListener('mousemove', (e) =>
+  console.log(e.offsetX, e.offsetY)
+);
+*/
+
+/*
+// FORM EVENTS
+let form = document.querySelector('.sign-up-Form');
+// let email = document.querySelector('#email');
+// let password = document.querySelector('#password');
+console.log(form);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // access the input using id
+  // console.log(email.value, '&', password.value);
+  //since we have given names to input hence we can  directly access the input using name
+  console.log(form.userEmail.value, '&', form.userPassword.value);
+  console.log('Form has been submitted');
+});
+
+
+// REGULAR EXPRESSION (Regex) : It is a pattern of characters used to do pattern matching or we can say for "Data Validation"
+
+//Implementation of password validation
+//a)length at least = 8  " .{min_length,max_length}$"
+//b) at least contain one upper case letter "^(?=.*?[A-Z])"
+//c) at least contain one lower case letter"continue...(?=.*?[a-z])"
+//d) at least contain one digit between o to 9 "...continue (?=.*?[0-9])"
+//creating custom validation for password from the above rules
+let passwordPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
+
+let form = document.querySelector('.sign-up-Form');
+let email = document.querySelector('#email');
+let password = document.querySelector('#password');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let passwordValue = password.value;
+  console.log(passwordValue);
+  let result = passwordValue.match(passwordPattern);
+  console.log(result);
+  if (result) {
+    console.log('Your password is strong');
+  } else {
+    console.log('OOps Weak password, please try again');
+  }
+});
+
+
+// REGULAR EXPRESSION PART-2 (REGEX) --> basic form validation for userName
+//Implement user name validation
+//a)Username can only consists of [A-Z] or [a-z] --> /^[A-Za-z]/
+//b)Length of the user name between 6 - 12 /{min_length,max_length}$/
+let usernamePattern = /^[A-Za-z]{6,12}$/;
+
+let form = document.querySelector('.sign-up-Form');
+let user = document.querySelector('#name');
+let password = document.querySelector('#password');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let userName = user.value;
+  //test method returns boolean values
+  let result = usernamePattern.test(userName);
+  console.log(result);
+  if (result == true) {
+    console.log('UserName is accepted');
+  } else {
+    console.log('OOps Weak userName, please try again');
+  }
+});
+
+// KEYBOARD EVENT
+let usernamePattern = /^[A-Za-z]{6,12}$/;
+
+let form = document.querySelector('.sign-up-Form');
+let user = document.querySelector('#name');
+let password = document.querySelector('#password');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let userName = user.value;
+  //test method returns boolean values
+  let result = usernamePattern.test(userName);
+  console.log(result);
+  if (result == true) {
+    console.log('UserName is accepted');
+  } else {
+    console.log('OOps Weak userName, please try again');
+  }
+});
+//live feedback  --> console will display live, if your given data is accepted or not
+user.addEventListener('keyup', (e) => {
+  if (usernamePattern.test(e.target.value)) {
+    //true
+    console.log('Passed');
+    // setAttribute('selector_type','class_name')
+    user.setAttribute('class', 'success');
+  } else {
+    console.log('failed');
+    user.setAttribute('class', 'error');
+  }
+});
+*/
