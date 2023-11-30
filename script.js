@@ -1060,4 +1060,62 @@ let res = ages.findIndex((ele) => {
 });
 console.log(res);
 
+
+//SOME METHOD : returns "true" if "any" array element pass the test
+let scores = [33, 44, 55, 66];
+let res = scores.some((ele) => ele > 10);
+console.log(res);
+
+//EVERY METHOD : returns "true" if "ALL" array element pass the test
+let newScores = [33, 44, 55, 66];
+let newRes = scores.every((ele) => ele > 35);
+console.log(newRes);
+
+//FLAT ARRAY : It creates a new array with the elements of the "subArray" concatenated into it.
+let arr = [22, 33, 44, 55, [100, 102, 104]];
+console.log('Before flat method ', arr);
+let newArr = arr.flat(); // by default 1 value is passed inside flat method.... it shows the level of the subarray inside the array
+let ar1 = [1, 2, 3, [4, 5, [6, 7, 8]]]; // this shows the level of subArray
+let newArray = ar1.flat(3);
+console.log('After flat method ', newArray);
+
+
+//FLAT-MAP METHOD
+// question --> If A USER BUY A PRODUCT, WE WANT TO ADD MORE EQUIPMENT IN THAT PRODUCT
+//It is the combination of "map()" method followed by the "flat()" method of depth "1"
+
+let cart = [
+  {
+    name: 'MOBILE PHONE',
+    qty: 2,
+    price: '12k',
+  },
+  {
+    name: 'TABLET',
+    qty: 4,
+    price: '10k',
+  },
+  {
+    name: 'I-PHONE',
+    qty: 1,
+    price: '1LAC',
+  },
+];
+
+let newCart = cart.flatMap((item) => {
+  if (item.name == 'MOBILE PHONE') {
+    return [
+      item,
+      {
+        name: 'MOBILE-CHARGER',
+        qty: 1,
+        price: 0,
+      },
+    ];
+  } else {
+    return [item];
+  }
+});
+
+console.log(newCart);
 */
