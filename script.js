@@ -960,4 +960,76 @@ let upgrade = nums.splice(2, 0, 111, 222, 333);
 console.log(nums);
 console.log(upgrade); // only returns the deleted element
 
+
+
+// AT METHOD
+let num = [22, 33, 44, 55, 66];
+console.log(num[0]);
+console.log(num.at(2));
+// getting the last element of array
+console.log(num[num.length - 1]);
+// extracting last two values by providing negative number and returning a new array using slice
+console.log(num.slice(-2));
+[55, 66];
+// extracting last two values and returning a new array using slice and then giving the index position to get the result from newly generated array
+console.log(num.slice(-2)[1]); //newArray[1]
+// Advantage of using at method to get the last index value
+console.log(num.at(-1));
+
+//At method can also work on strings
+let name = 'larry';
+console.log(name.at(-1));
+
+
+
+// HIGHER ORDER FUNCTIONS
+
+// MAP METHOD : create new array from original array by applying transformation method
+// always use map method when you want to get the newArray of the same original's array length
+// Doesn't change the original array
+
+
+let salary = [20000, 500000, 600000, 40000, 2000000, 3000000000];
+// using map method ... increment the salary by 50%, data is given in the array
+let newSalary = salary.map((ele) => ele / 2 + ele);
+console.log(newSalary);
+
+
+// FILTER METHOD (Used to perform filtration on Array )
+// Return only the filtered element
+// Length of the new array may or may not be equal to the length of the original array
+// Doesn't change the original array
+let gifts = [
+  'watch',
+  'ring',
+  'chocolates',
+  'Iphone',
+  'watch',
+  'ring',
+  'movie-tickets',
+];
+
+let filteredArray = gifts.filter((ele) => {
+  if (ele == 'watch' || ele == 'ring') {
+    return ele;
+  }
+});
+console.log(filteredArray);
+
+
+// REDUCE METHOD (Used to reduce the array)
+// Run reducer function for each array's element
+// syntax : Array.reduce(function(total,currentValue), initial value of total)
+// It return single value
+// Does not mutate the original Array
+
+let num = [12, 23, 354, 675];
+
+let res = num.reduce((totalValue, ele) => {
+  // totalValue is initially zero
+  console.log('total value is : ', totalValue);
+  return totalValue + ele;
+}, 0);
+
+console.log(res);
 */
