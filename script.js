@@ -1030,6 +1030,34 @@ let res = num.reduce((totalValue, ele) => {
   console.log('total value is : ', totalValue);
   return totalValue + ele;
 }, 0);
-
 console.log(res);
+
+
+
+// FIND METHOD
+// It returns the "first" matched element we are looking for... else it will return undefined if not found
+
+let students = [
+  { id: 44, name: 'meenakshi mishra' },
+  { id: 44, name: 'meenakshi sharma' },
+  { id: 11, name: 'sanjay joshi' },
+  { id: 22, name: 'akansha kumari' },
+  { id: 33, name: 'pooja singh' },
+  { id: 44, name: 'meenakshi verma' },
+];
+
+let resu = students.find((ele) => {
+  return ele.id === 44;
+});
+console.log(resu);
+
+//FIND-INDEX METHOD
+//It return "index" of that array element who "first" pass the test otherwise return -1 if not such index is present
+
+let ages = [11, 22, 33, 44, 11];
+let res = ages.findIndex((ele) => {
+  return ele > 11;
+});
+console.log(res);
+
 */
