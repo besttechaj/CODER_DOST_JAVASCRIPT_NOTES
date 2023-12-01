@@ -1118,4 +1118,46 @@ let newCart = cart.flatMap((item) => {
 });
 
 console.log(newCart);
+
+
+
+//SORTING OF ARRAY USING SORT METHOD
+// sort () --> Ascending way
+// Mutate the original array
+// by default sort() method is used to sort strings
+// It firstly converted everything into string and then
+let letters = ['f', 'e', 'k', 'a', 'm'];
+console.log('before sorting : ', letters);
+letters.sort();
+console.log('After sorting : ', letters);
+//NOTE: sort() is used for string but not for integers.... so the solution for that by passing comparable function inside sort method
+let nums = [-1, -22, -5, -2, 0, 4, 64, 21, 4];
+// console.log(nums.sort()); // Unexpected.. sort() is used to sort string
+// logic/Algorithm behind sorting of integers
+// [a,b,c,d,e]
+// if a-b < 0 => means a < b => A,B (KEEP SAME ORDER)
+// if a-b > 0 => means a > b => B,A (SWITCH THE ORDER)
+console.log('unsorted integer', nums);
+//PASSING COMPARABLE FUNCTION INSIDE SORT METHOD TO PERFORM ASCENDING AND DESCENDING ON INTEGERS
+// sort(CompareFunction():@param compareFn Function used to determine the order of the elements. It is expected to return a negative value if the first argument is less than the second argument, zero if they're equal, and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order.)
+nums.sort((a, b) => {
+  if (a < b) {
+    return -1; // that means no swap required
+  }
+  if (a > b) {
+    return 1; // that means swap the number
+  }
+});
+console.log('sorted integer ', nums);
+//Other way of declaring sort() method for integer [ASCENDING ORDER]
+let numbers = [0, 32, 43, -21, -4];
+numbers.sort((a, b) => a - b);
+console.log('after ASCENDING using sort method: ', numbers);
+
+//Other way of declaring sort() method for integer [DESCENDING ORDER]
+console.log(
+  'after descending using sort method: ',
+  numbers.sort((a, b) => b - a)
+);
+
 */
