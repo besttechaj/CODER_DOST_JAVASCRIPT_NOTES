@@ -1173,3 +1173,59 @@ let res = num2.slice(0, 3).splice(2, 1, 45).push(8);
 console.log(res, '&&', num2);
 
 */
+
+/*
+// DATE AND TIME : Date object always carry date and time
+
+// Using date method
+let currentDate = new Date();
+console.log(currentDate);
+
+let updatingDate = new Date(10, 11, 2); // (YEAR, 0-11 month,date, hour, minute seconds)
+console.log(updatingDate);
+
+// Using timeStamp (integer number represent in "ms" from 1-1-1970)
+// let currentDate = new Date(0); // 0 is time in "ms"  --> unix's first timeStamp in computer world
+// let currentDate = new Date(84600000);
+// // 1 day = 24 hrs * 60 min * 60 sec = 86400000ms
+// console.log(currentDate);
+
+//to get time in ms ... since 1970
+// let currentDate = new Date().getTime();
+// console.log(currentDate); //mili seconds
+
+// you can pass hour minute and seconds also
+// let updatingDate = new Date(10, 11, 2, 12, 40, 2); // (YEAR,0-11 month,date, hour, minute seconds)
+// console.log(updatingDate);
+
+// DATE AND TIME METHODS
+let completeDateAndTime = new Date(12, 3, 12, 2, 30, 45);
+console.log(completeDateAndTime);
+console.log(completeDateAndTime.getFullYear());
+console.log(completeDateAndTime.getMonth()); //0-11 month
+console.log(completeDateAndTime.getDate());
+console.log(completeDateAndTime.getDay()); //0 (sunday)-6(saturday)
+console.log(completeDateAndTime.getHours());
+console.log(completeDateAndTime.getMinutes());
+console.log(completeDateAndTime.getSeconds());
+console.log(completeDateAndTime.getMilliseconds());
+
+//MINI PROJECT : DIGITAL CLOCK
+
+let hourHand = document.querySelector('.hour');
+let minuteHand = document.querySelector('.minute');
+let secondHand = document.querySelector('.second');
+
+const ticking = () => {
+  let currentDate = new Date();
+  let getHour = currentDate.getHours();
+  let getMin = currentDate.getMinutes();
+  let getSec = currentDate.getSeconds();
+
+  hourHand.textContent = getHour;
+  minuteHand.textContent = getMin;
+  secondHand.textContent = getSec;
+};
+
+setInterval(ticking, 1000); // running after every second
+*/
