@@ -1160,4 +1160,16 @@ console.log(
   numbers.sort((a, b) => b - a)
 );
 
+
+//CHAIN OF METHODS
+let num = [11, 22, 33, 44, 55, 66];
+// using slice first we are fetching the number by giving the range and then applying the splice method to get back the deleted element by providing (index_location, no. of items to be deleted, newValueToBeAdded)
+let res = num.slice(0, 3).splice(2, 1, 45);
+console.log(res, '&&', num);
+
+let num2 = [11, 22, 33, 44, 55, 66];
+// using slice first we are fetching the number by giving the range and then applying the splice method to get back the deleted element by providing (index_location, no. of items to be deleted, newValueToBeAdded).... Adding a new element inside the return array from slice method array using push method, Here push method return the length of new array not the array
+let res = num2.slice(0, 3).splice(2, 1, 45).push(8);
+console.log(res, '&&', num2);
+
 */
