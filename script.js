@@ -1229,3 +1229,72 @@ const ticking = () => {
 
 setInterval(ticking, 1000); // running after every second
 */
+
+/*
+LOCAL STORAGE : DATABASE FOR BROWSER
+In Previous todo list task when we refresh the browser we loose our current state data.... local storage saves our data
+
+//Store and retrieve data from database
+
+//Store and retrieve data from local storage
+
+// local storage is an Api provided by browser to store data inside browser
+
+console.log(window.localStorage);
+console.log(localStorage);
+
+// SET THE ITEM IN LOCAL STORAGE
+// localStorage.setItem('passion', 'Programming'); //(key and value pair)
+// localStorage.setItem('age', 23);
+console.log(localStorage);
+
+// GET THE ITEM FROM LOCAL STORAGE
+console.log(localStorage.getItem('age')); // need to pass the "Key"
+
+// UPDATE THE LOCAL STORAGE
+localStorage.setItem('age', 20); // overwrite the previous value by passing the key and value
+console.log(localStorage);
+
+// REMOVE THE ITEM FROM LOCAL STORAGE
+localStorage.removeItem('age');
+console.log(localStorage);
+
+// HOW TO STORE COMPLEX DATA STRUCTURE LIKE ARRAY OF OBJECTS
+// ULTIMATELY IN LOCAL STORAGE, DATA STORE IN STRING FORMATE
+
+let vehicles = [
+  {
+    company: 'TATA',
+    model: '2023',
+  },
+  {
+    company: 'TOYOTA',
+    model: '2021',
+  },
+  {
+    company: 'HYUNDAI',
+    model: 2024,
+  },
+];
+console.log(vehicles);
+console.log(typeof vehicles);
+
+//TO STORE THE ABOVE DATA IN LOCAL STORAGE, FIRSTLY WE NEED TO CONVERT IT INTO STRING
+let stringOfVehicles = JSON.stringify(vehicles);
+console.log('string conversion: ', stringOfVehicles);
+console.log(typeof stringOfVehicles);
+
+// NOW SAVING THE DATA [STRING FORMATE] INSIDE LOCAL STORAGE
+localStorage.setItem('Vehicles', stringOfVehicles);
+console.log(localStorage);
+console.log(typeof localStorage); // object
+
+// GET THE ITEM FROM LOCAL STORAGE IN ITS ORIGINAL OBJECT FORMATE
+let storedData = localStorage.getItem('Vehicles'); // pass as a string formate
+console.log(storedData);
+console.log(typeof storedData);
+// CONVERTING STRING TO OBJECT FORMATE
+let objectFormate = JSON.parse(storedData);
+console.log(objectFormate);
+console.log(typeof objectFormate);
+*/
