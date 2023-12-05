@@ -1,4 +1,4 @@
-console.log('Javascript important topics based notes');
+// console.log('Javascript important topics based notes');
 
 //VARIABLES --> var, let, const
 
@@ -1297,4 +1297,104 @@ console.log(typeof storedData);
 let objectFormate = JSON.parse(storedData);
 console.log(objectFormate);
 console.log(typeof objectFormate);
+*/
+
+/*
+
+OBJECT ORIENTED PROGRAMMING
+
+//Constructor function and the "new" object
+// We cannot use "arrow - function" as Constructor
+// call constructor function using "new" keyword
+//a) new {object} created empty initially
+//b) "this" = object
+//c) Object link to protoType
+//d) function automatically return {object}
+// creating a constructor of a function
+let Car = function (color, model) {
+  // instance properties (ie variables)
+  this.carColor = color;
+  this.carModel = model;
+  //Not a good practice
+  // DEFINING METHODS
+  this.login = function () {
+    console.log('login method');
+  };
+};
+
+// new Car --> Constructor,  instanceOfTheCar --> instance
+let instanceOfTheCar1 = new Car('BLACK', 2022);
+console.log(instanceOfTheCar1); // creating an object from Car
+console.log(typeof instanceOfTheCar1);
+
+let instanceOfTheCar2 = new Car('RED', 2024);
+console.log(instanceOfTheCar2); // creating an object from Car
+console.log(typeof instanceOfTheCar2);
+
+// checking whether the instance belongs to a specific constructor type
+console.log(instanceOfTheCar2 instanceof Car); // true
+
+
+// PROTOTYPES : Each object created by "constructor" function have an access to all "methods" and "properties / variables" present inside that "constructor" prototype
+
+let Car = function (color, model) {
+  // instance properties (ie variables)
+  this.carColor = color;
+  this.carModel = model;
+};
+
+// WE CAN SET "METHOD" to Prototype
+Car.prototype.startEngine = function () {
+  console.log('this is start engine method');
+};
+
+// WE CAN SET "PROPERTIES/ VARIABLES" to Prototype
+Car.prototype.company = 'HONDA'; // this will available to all object which is by constructor
+
+// so now Each object created by "constructor" function have an access to all "methods" present inside that "constructor" prototype
+// checking prototype by using constructor itself instead of constructor's instance(ie. object)
+// console.log(Car.prototype);
+
+let instanceOfTheCar1 = new Car('BLACK', 2022);
+let instance = new Car('BLUE', 2000);
+// console.log(instanceOfTheCar1, instance); // object
+// NOTE --> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S METHODS
+instanceOfTheCar1.startEngine();
+
+// checking prototype by using constructor's instance
+// console.log('checking proto-type of object: ',instanceOfTheCar1.__proto__);
+// console.log('checking proto-type of object: ',instance.__proto__);
+
+// checking prototype by using constructor's instance
+// NOTE --> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S PROPERTIES/ VARIABLES
+console.log(instanceOfTheCar1.company);
+console.log(instance.company);
+
+// CONCLUSION:PROTOTYPE INHERITANCE ---> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S ALL METHODS AND PROPERTIES (VARIABLES)
+
+// checking prototype by using constructor's instance(ie. object)
+console.log('checking proto-type of object: ', instance.__proto__);
+// checking prototype by using Constructor itself
+// the above line is same as
+console.log(Car.prototype);
+
+console.log(instance); // constructor, proto-type
+
+// TO CHECK WHETHER THE INSTANCE (created object from constructor) BELONG TO THE SPECIFIC PROTO-TYPE OR NOT
+console.log(instance.__proto__.isPrototypeOf(instance)); //true
+
+console.log(Car.prototype.isPrototypeOf(Car)); // false : Prototype is created using Car Constructor. And Car's instance is created using proto-type.
+// Car.prototype is prototype of all objects created through the car constructor.
+
+// prototype of array
+let array = [2, 3, 4, 5, 6, 7]; // [] is same as new Array([]) constructor..... given below
+console.log(array.__proto__);
+//same as above
+console.log(Array.prototype);
+
+// note : prototype: it is a type of template which is used to link the constructor's instance's (ie object) to the prototype to have access to the methods and properties present inside prototype.
+
+console.log(array.__proto__.__proto__); // chaining of prototype.... the last level/ end is null
+console.log(Object.prototype);
+
 */
