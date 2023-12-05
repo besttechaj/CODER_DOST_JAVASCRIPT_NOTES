@@ -1397,4 +1397,35 @@ console.log(Array.prototype);
 console.log(array.__proto__.__proto__); // chaining of prototype.... the last level/ end is null
 console.log(Object.prototype);
 
+// NEW WAY OF DECLARING PROTOTYPE
+// ES6 Classes ( They still implement prototypal inheritance behind the scene)
+//class declaration
+
+class Car {
+  constructor(color, model) {
+    this.color = color;
+    this.model = model;
+  }
+  startEngine() {
+    console.log('this is start engine method of class car');
+  }
+}
+
+let honda = new Car('RED', 2024);
+console.log(honda.__proto__.isPrototypeOf(honda));
+honda.startEngine();
+// traditional way of declaring prototype in the above class
+Car.prototype.breakMethod = function () {
+  console.log('this is a break method, belongs to car class');
+};
+console.log(honda);
+honda.breakMethod();
+honda.startEngine();
+console.log(honda.__proto__);
+
+//IMPORTANT NOTES
+//a) classes are not hoisted (In function we can call it above while declaring it below)
+//b) classes are also first class citizens(pass as an argument or return)
+//c) classes are executed in strict mode
+
 */
