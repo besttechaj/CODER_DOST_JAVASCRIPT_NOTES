@@ -40,7 +40,6 @@ person.lang = "en";
 
 // Display data from the object:
 document.getElementById("demo").innerHTML = person.language;
-ADVERTISEMENT
 
 JavaScript Function or Getter?
 What is the differences between these two examples?

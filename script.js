@@ -1968,7 +1968,7 @@ CONSTRUCTOR NOTES FROM CODER-DOST
 // call constructor function using "new" keyword
 //a) new {object} created empty initially
 //b) "this" = object
-//c) Object link to protoType
+//c) Object link to protoType [ All JavaScript objects inherit properties and methods from a prototype. ]
 //d) function automatically return {object}
 // creating a constructor of a function
 let Car = function (color, model) {
@@ -1995,7 +1995,83 @@ console.log(typeof instanceOfTheCar2);
 console.log(instanceOfTheCar2 instanceof Car); // true
 
 
-// PROTOTYPES : Each object created by "constructor" function have an access to all "methods" and "properties / variables" present inside that "constructor" prototype
+PROTOTYPES : Each object created by "constructor" function have an access to all "methods" and "properties / variables" present inside that "constructor's"  prototype
+All JavaScript objects inherit properties and methods from a prototype.
+
+JavaScript Object Prototypes
+All JavaScript objects inherit properties and methods from a prototype.
+
+In the previous chapter we learned how to use an object constructor:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+We also learned that you can not add a new property to an existing object constructor:
+
+Example
+Person.nationality = "English";
+To add a new property to a constructor, you must add it to the constructor function:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.nationality = "English";
+}
+ADVERTISEMENT
+
+Prototype Inheritance
+All JavaScript objects inherit properties and methods from a prototype:
+
+Date objects inherit from Date.prototype
+Array objects inherit from Array.prototype
+Person objects inherit from Person.prototype
+The Object.prototype is on the top of the prototype inheritance chain:
+
+Date objects, Array objects, and Person objects inherit from Object.prototype.
+
+Adding Properties and Methods to Objects
+Sometimes you want to add new properties (or methods) to all existing objects of a given type.
+
+Sometimes you want to add new properties (or methods) to an object constructor.
+
+Using the prototype Property
+The JavaScript prototype property allows you to add new properties to object constructors:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.nationality = "English";
+The JavaScript prototype property also allows you to add new methods to objects constructors:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+Only modify your own prototypes. Never modify the prototypes of standard JavaScript objects.
+
+note : Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
 
 let Car = function (color, model) {
   // instance properties (ie variables)
@@ -2009,11 +2085,11 @@ Car.prototype.startEngine = function () {
 };
 
 // WE CAN SET "PROPERTIES/ VARIABLES" to Prototype
-Car.prototype.company = 'HONDA'; // this will available to all object which is by constructor
+Car.prototype.company = 'HONDA'; // this will available to all object which is created by constructor since All JavaScript objects inherit properties and methods from a prototype.
 
-// so now Each object created by "constructor" function have an access to all "methods" present inside that "constructor" prototype
-// checking prototype by using constructor itself instead of constructor's instance(ie. object)
-// console.log(Car.prototype);
+so now Each object created by "constructor" function have an access to all "methods" present inside that "constructor" prototype
+checking prototype by using constructor itself instead of constructor's instance(ie. object)
+console.log(Car.prototype);
 
 let instanceOfTheCar1 = new Car('BLACK', 2022);
 let instance = new Car('BLUE', 2000);
@@ -2021,16 +2097,16 @@ let instance = new Car('BLUE', 2000);
 // NOTE --> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S METHODS
 instanceOfTheCar1.startEngine();
 
-// checking prototype by using constructor's instance
+// checking prototype by using constructor's instance (ie object)
 // console.log('checking proto-type of object: ',instanceOfTheCar1.__proto__);
 // console.log('checking proto-type of object: ',instance.__proto__);
 
-// checking prototype by using constructor's instance
-// NOTE --> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S PROPERTIES/ VARIABLES
+// checking prototype by using constructor's instance (ie object)
+// NOTE --> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S PROPERTIES/ VARIABLES because All JavaScript objects inherit properties and methods from a prototype.
 console.log(instanceOfTheCar1.company);
 console.log(instance.company);
 
-// CONCLUSION:PROTOTYPE INHERITANCE ---> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S ALL METHODS AND PROPERTIES (VARIABLES)
+// CONCLUSION:PROTOTYPE INHERITANCE ---> NOW WHENEVER AN OBJECT IS CREATED USING SPECIFIC CONSTRUCTOR, EVERY OBJECT HAS ACCESS TO CONSTRUCTOR'S PROTOTYPE'S ALL METHODS AND PROPERTIES (VARIABLES) because All JavaScript objects inherit properties and methods from a prototype.
 
 // checking prototype by using constructor's instance(ie. object)
 console.log('checking proto-type of object: ', instance.__proto__);
@@ -2238,3 +2314,54 @@ obj.decrement;
 NOTE : THE KEY IN OBJECT ARE KNOWN AS "PROPERTIES" 
 
 */
+
+/*
+coder-dost
+Object Oriented Programming : Getter and Setter method 
+
+JavaScript Object Accessors
+JavaScript Accessors (Getters and Setters)
+ECMAScript 5 (ES5 2009) introduced Getter and Setters.
+
+Getters and setters allow you to define Object Accessors (Computed Properties).
+*/
+
+class Car {
+  constructor(color, model) {
+    this.color = color;
+    this.model = model;
+  }
+
+  // declaring a function not the property, hence need to call using function call
+  startEngine() {
+    console.log('this start engine belongs to Car class');
+  }
+
+  // declaring a property not the function with the help of get method, hence you can call it using property name
+  get accelerate() {
+    console.log('press the acceleration paddle to move the car');
+  }
+
+  get description() {
+    return ` Color of car is ${this.color} and its model is ${this.model}`;
+  }
+
+  // declaring a property not the function using set method to change the color, hence you need to set the color using property name
+  set changeColor(color) {
+    this.color = color;
+    console.log(color);
+  }
+}
+
+let honda = new Car('red', 2024);
+console.log(honda);
+honda.startEngine(); // accessing as function
+//getting the property
+honda.accelerate; // accessing as property [computed property]
+console.log(honda.description); // accessing as property [computed property]
+// setting the property
+honda.changeColor = 'White';
+console.log(honda);
+console.log(honda.description);
+
+// conclusion : getter and setter are mainly used for abstraction like hiding the implementation part and displaying only the required part.
