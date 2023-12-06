@@ -1299,10 +1299,670 @@ console.log(objectFormate);
 console.log(typeof objectFormate);
 */
 
+// OOPS : OBJECT ORIENTED PROGRAMMING ********************** VERY IMPORTANT (VISIT W-3-SCHOOL FOR BETTER NOTES)
+
 /*
 
-OBJECT ORIENTED PROGRAMMING
+OBJECT ORIENTED PROGRAMMING : CONSTRUCTOR
 
+JavaScript Object Constructors
+Example
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+Notes
+It is considered good practice to name constructor functions with an upper-case first letter.
+
+About this
+In a constructor function this does not have a value. It is a substitute for the new object. The value of this will become the new object when a new object is created.
+
+See Also:
+The JavaScript this Tutorial
+
+Object Types (Blueprints) (Classes)
+The examples from the previous chapters are limited. They only create single objects.
+
+Sometimes we need a "blueprint" for creating many objects of the same "type".
+
+The way to create an "object type", is to use an object constructor function.
+
+In the example above, function Person() is an object constructor function.
+
+Objects of the same type are created by calling the constructor function with the new keyword:
+
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+ADVERTISEMENT
+
+What is this?
+In JavaScript, the this keyword refers to an object.
+
+Which object depends on how this is being invoked (used or called).
+
+The this keyword refers to different objects depending on how it is used:
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+Note
+this is not a variable. It is a keyword. You cannot change the value of this.
+See Also:
+The JavaScript this Tutorial
+
+Adding a Property to an Object
+Adding a new property to an existing object is easy:
+
+Example
+myFather.nationality = "English";
+The property will be added to myFather. Not to myMother. (Not to any other person objects).
+
+Adding a Method to an Object
+Adding a new method to an existing object is easy:
+
+Example
+myFather.name = function () {
+  return this.firstName + " " + this.lastName;
+};
+The method will be added to myFather. Not to myMother. (Not to any other person objects).
+
+Adding a Property to a Constructor
+You cannot add a new property to an object constructor the same way you add a new property to an existing object:
+
+Example
+Person.nationality = "English";
+To add a new property to a constructor, you must add it to the constructor function:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.nationality = "English";
+}
+This way object properties can have default values.
+
+Adding a Method to a Constructor
+Your constructor function can also define methods:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.name = function() {
+    return this.firstName + " " + this.lastName;
+  };
+}
+You cannot add a new method to an object constructor the same way you add a new method to an existing object.
+
+Adding methods to an object constructor must be done inside the constructor function:
+
+Example
+function Person(firstName, lastName, age, eyeColor) {
+  this.firstName = firstName; 
+  this.lastName = lastName;
+  this.age = age;
+  this.eyeColor = eyeColor;
+  this.changeName = function (name) {
+    this.lastName = name;
+  };
+}
+The changeName() function assigns the value of name to the person's lastName property.
+
+Now You Can Try:
+myMother.changeName("Doe");
+JavaScript knows which person you are talking about by "substituting" this with myMother.
+
+Built-in JavaScript Constructors
+JavaScript has built-in constructors for native objects:
+
+new String()    // A new String object
+new Number()    // A new Number object
+new Boolean()   // A new Boolean object
+new Object()    // A new Object object
+new Array()     // A new Array object
+new RegExp()    // A new RegExp object
+new Function()  // A new Function object
+new Date()      // A new Date object
+The Math() object is not in the list. Math is a global object. The new keyword cannot be used on Math.
+
+Did You Know?
+As you can see above, JavaScript has object versions of the primitive data types String, Number, and Boolean. But there is no reason to create complex objects. Primitive values are much faster:
+
+Use string literals "" instead of new String().
+
+Use number literals 50 instead of new Number().
+
+Use boolean literals true / false instead of new Boolean().
+
+Use object literals {} instead of new Object().
+
+Use array literals [] instead of new Array().
+
+Use pattern literals /()/ instead of new RegExp().
+
+Use function expressions () {} instead of new Function().
+
+Example
+let x1 = "";             // new primitive string
+let x2 = 0;              // new primitive number
+let x3 = false;          // new primitive boolean
+
+const x4 = {};           // new Object object
+const x5 = [];           // new Array object
+const x6 = /()/          // new RegExp object
+const x7 = function(){}; // new function
+String Objects
+Normally, strings are created as primitives: firstName = "John"
+
+But strings can also be created as objects using the new keyword:
+firstName = new String("John")
+
+Learn why strings should not be created as object in the chapter JS Strings ??????????
+ANSWER ((((((((((((((((((((((((((((((((
+JavaScript strings are for storing and manipulating text.
+
+A JavaScript string is zero or more characters written inside quotes.
+
+Example
+let text = "John Doe";
+You can use single or double quotes:
+
+Example
+let carName1 = "Volvo XC60";  // Double quotes
+let carName2 = 'Volvo XC60';  // Single quotes
+You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
+
+Example
+let answer1 = "It's alright";
+let answer2 = "He is called 'Johnny'";
+let answer3 = 'He is called "Johnny"';
+String Length
+To find the length of a string, use the built-in length property:
+
+Example
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length;
+ADVERTISEMENT
+
+Escape Character
+Because strings must be written within quotes, JavaScript will misunderstand this string:
+
+let text = "We are the so-called "Vikings" from the north.";
+The string will be chopped to "We are the so-called ".
+
+The solution to avoid this problem, is to use the backslash escape character.
+
+The backslash (\) escape character turns special characters into string characters:
+
+Code	Result	Description
+\'	'	Single quote
+\"	"	Double quote
+\\	\	Backslash
+The sequence \"  inserts a double quote in a string:
+
+Example
+let text = "We are the so-called \"Vikings\" from the north.";
+The sequence \'  inserts a single quote in a string:
+
+Example
+let text= 'It\'s alright.';
+The sequence \\  inserts a backslash in a string:
+
+Example
+let text = "The character \\ is called backslash.";
+Six other escape sequences are valid in JavaScript:
+
+Code	Result
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+The 6 escape characters above were originally designed to control typewriters, teletypes, and fax machines. They do not make any sense in HTML.
+
+Breaking Long Code Lines
+For best readability, programmers often like to avoid code lines longer than 80 characters.
+
+If a JavaScript statement does not fit on one line, the best place to break it is after an operator:
+
+Example
+document.getElementById("demo").innerHTML =
+"Hello Dolly!";
+You can also break up a code line within a text string with a single backslash:
+
+Example
+document.getElementById("demo").innerHTML = "Hello \
+Dolly!";
+The \ method is not the preferred method. It might not have universal support.
+Some browsers do not allow spaces behind the \ character.
+
+A safer way to break up a string, is to use string addition:
+
+Example
+document.getElementById("demo").innerHTML = "Hello " +
+"Dolly!";
+You cannot break up a code line with a backslash:
+
+Example
+document.getElementById("demo").innerHTML = \
+"Hello Dolly!";
+JavaScript Strings as Objects
+Normally, JavaScript strings are primitive values, created from literals:
+
+let x = "John";
+But strings can also be defined as objects with the keyword new:
+
+let y = new String("John");
+Example
+let x = "John";
+let y = new String("John");
+Do not create Strings objects.
+
+The new keyword complicates the code and slows down execution speed.
+
+String objects can produce unexpected results:
+
+When using the == operator, x and y are equal:
+
+let x = "John";
+let y = new String("John");
+When using the === operator, x and y are not equal:
+
+let x = "John";
+let y = new String("John");
+Note the difference between (x==y) and (x===y).
+
+(x == y) true or false?
+
+let x = new String("John");
+let y = new String("John");
+(x === y) true or false?
+
+let x = new String("John");
+let y = new String("John");
+Comparing two JavaScript objects always returns false.
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+Number Objects
+Normally, numbers are created as primitives: x = 30
+
+But numbers can also be created as objects using the new keyword:
+x = new Number(30)
+
+Learn why numbers should not be created as object in the chapter JS Numbers.
+ANSWERRRR ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+  JavaScript Numbers
+JavaScript has only one type of number. Numbers can be written with or without decimals.
+
+Example
+let x = 3.14;    // A number with decimals
+let y = 3;       // A number without decimals
+
+Extra large or extra small numbers can be written with scientific (exponent) notation:
+
+Example
+let x = 123e5;    // 12300000
+let y = 123e-5;   // 0.00123
+
+JavaScript Numbers are Always 64-bit Floating Point
+Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.
+
+JavaScript numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard.
+
+This format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63:
+
+Value (aka Fraction/Mantissa)	Exponent	Sign
+52 bits (0 - 51) 	11 bits (52 - 62)	1 bit (63)
+Integer Precision
+Integers (numbers without a period or exponent notation) are accurate up to 15 digits.
+
+Example
+let x = 999999999999999;   // x will be 999999999999999
+let y = 9999999999999999;  // y will be 10000000000000000
+The maximum number of decimals is 17.
+
+Floating Precision
+Floating point arithmetic is not always 100% accurate:
+
+let x = 0.2 + 0.1;
+
+To solve the problem above, it helps to multiply and divide:
+
+let x = (0.2 * 10 + 0.1 * 10) / 10;
+ADVERTISEMENT
+
+Adding Numbers and Strings
+WARNING !!
+
+JavaScript uses the + operator for both addition and concatenation.
+
+Numbers are added. Strings are concatenated.
+
+If you add two numbers, the result will be a number:
+
+Example
+let x = 10;
+let y = 20;
+let z = x + y;
+If you add two strings, the result will be a string concatenation:
+
+Example
+let x = "10";
+let y = "20";
+let z = x + y;
+If you add a number and a string, the result will be a string concatenation:
+
+Example
+let x = 10;
+let y = "20";
+let z = x + y;
+If you add a string and a number, the result will be a string concatenation:
+
+Example
+let x = "10";
+let y = 20;
+let z = x + y;
+A common mistake is to expect this result to be 30:
+
+Example
+let x = 10;
+let y = 20;
+let z = "The result is: " + x + y;
+A common mistake is to expect this result to be 102030:
+
+Example
+let x = 10;
+let y = 20;
+let z = "30";
+let result = x + y + z;
+The JavaScript interpreter works from left to right.
+
+First 10 + 20 is added because x and y are both numbers.
+
+Then 30 + "30" is concatenated because z is a string.
+
+Numeric Strings
+JavaScript strings can have numeric content:
+
+let x = 100;         // x is a number
+
+let y = "100";       // y is a string
+JavaScript will try to convert strings to numbers in all numeric operations:
+
+This will work:
+
+let x = "100";
+let y = "10";
+let z = x / y;
+
+This will also work:
+
+let x = "100";
+let y = "10";
+let z = x * y;
+
+And this will work:
+
+let x = "100";
+let y = "10";
+let z = x - y;
+
+But this will not work:
+
+let x = "100";
+let y = "10";
+let z = x + y;
+
+In the last example JavaScript uses the + operator to concatenate the strings.
+
+NaN - Not a Number
+NaN is a JavaScript reserved word indicating that a number is not a legal number.
+
+Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number):
+
+Example
+let x = 100 / "Apple";
+
+However, if the string is numeric, the result will be a number:
+
+Example
+let x = 100 / "10";
+You can use the global JavaScript function isNaN() to find out if a value is a not a number:
+
+Example
+let x = 100 / "Apple";
+isNaN(x);
+Watch out for NaN. If you use NaN in a mathematical operation, the result will also be NaN:
+
+Example
+let x = NaN;
+let y = 5;
+let z = x + y;
+Or the result might be a concatenation like NaN5:
+
+Example
+let x = NaN;
+let y = "5";
+let z = x + y;
+NaN is a number: typeof NaN returns number:
+
+Example
+typeof NaN;
+Infinity
+Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.
+
+Example
+let myNumber = 2;
+// Execute until Infinity
+while (myNumber != Infinity) {
+  myNumber = myNumber * myNumber;
+}
+Division by 0 (zero) also generates Infinity:
+
+Example
+let x =  2 / 0;
+let y = -2 / 0;
+Infinity is a number: typeof Infinity returns number.
+
+Example
+typeof Infinity;
+Hexadecimal
+JavaScript interprets numeric constants as hexadecimal if they are preceded by 0x.
+
+Example
+let x = 0xFF;
+Never write a number with a leading zero (like 07).
+Some JavaScript versions interpret numbers as octal if they are written with a leading zero.
+
+By default, JavaScript displays numbers as base 10 decimals.
+
+But you can use the toString() method to output numbers from base 2 to base 36.
+
+Hexadecimal is base 16. Decimal is base 10. Octal is base 8. Binary is base 2.
+
+Example
+let myNumber = 32;
+myNumber.toString(32);
+myNumber.toString(16);
+myNumber.toString(12);
+myNumber.toString(10);
+myNumber.toString(8);
+myNumber.toString(2);
+JavaScript Numbers as Objects
+Normally JavaScript numbers are primitive values created from literals:
+
+let x = 123;
+But numbers can also be defined as objects with the keyword new:
+
+let y = new Number(123);
+Example
+let x = 123;
+let y = new Number(123);
+Do not create Number objects.
+
+The new keyword complicates the code and slows down execution speed.
+
+Number Objects can produce unexpected results:
+
+When using the == operator, x and y are equal:
+
+let x = 500;
+let y = new Number(500);
+When using the === operator, x and y are not equal.
+
+let x = 500;
+let y = new Number(500);
+Note the difference between (x==y) and (x===y).
+
+(x == y) true or false?
+
+let x = new Number(500);
+let y = new Number(500);
+(x === y) true or false?
+
+let x = new Number(500);
+let y = new Number(500);
+Comparing two JavaScript objects always returns false.
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+Boolean Objects
+Normally, booleans are created as primitives: x = false
+
+But booleans can also be created as objects using the new keyword:
+x = new Boolean(false)
+
+Q) WHY BOOLEANS SHOULD NOT BE CREATED AS OBJECTS
+
+ANSWERRRRRRRRRRRRRR(((((((((((((((((((((((((
+JavaScript Booleans
+A JavaScript Boolean represents one of two values: true or false.
+
+Boolean Values
+Very often, in programming, you will need a data type that can only have one of two values, like
+
+YES / NO
+ON / OFF
+TRUE / FALSE
+For this, JavaScript has a Boolean data type. It can only take the values true or false.
+
+The Boolean() Function
+You can use the Boolean() function to find out if an expression (or a variable) is true:
+
+Example
+Boolean(10 > 9)
+Or even easier:
+
+Example
+(10 > 9)
+10 > 9
+Comparisons and Conditions
+The chapter JS Comparisons gives a full overview of comparison operators.
+
+The chapter JS If Else gives a full overview of conditional statements.
+
+Here are some examples:
+
+Operator	Description	Example
+==	equal to	if (day == "Monday")
+>	greater than	if (salary > 9000)
+<	less than	if (age < 18)
+The Boolean value of an expression is the basis for all JavaScript comparisons and conditions.
+
+ADVERTISEMENT
+
+Everything With a "Value" is True
+Examples
+100
+
+3.14
+
+-15
+
+"Hello"
+
+"false"
+
+7 + 1 + 3.14
+Everything Without a "Value" is False
+The Boolean value of 0 (zero) is false:
+
+let x = 0;
+Boolean(x);
+The Boolean value of -0 (minus zero) is false:
+
+let x = -0;
+Boolean(x);
+The Boolean value of "" (empty string) is false:
+
+let x = "";
+Boolean(x);
+The Boolean value of undefined is false:
+
+let x;
+Boolean(x);
+The Boolean value of null is false:
+
+let x = null;
+Boolean(x);
+The Boolean value of false is (you guessed it) false:
+
+let x = false;
+Boolean(x);
+The Boolean value of NaN is false:
+
+let x = 10 / "Hallo";
+Boolean(x);
+JavaScript Booleans as Objects
+Normally JavaScript booleans are primitive values created from literals:
+
+let x = false;
+But booleans can also be defined as objects with the keyword new:
+
+let y = new Boolean(false);
+Example
+let x = false;
+let y = new Boolean(false);
+
+// typeof x returns boolean
+// typeof y returns object
+Do not create Boolean objects.
+
+The new keyword complicates the code and slows down execution speed.
+
+Boolean objects can produce unexpected results:
+
+When using the == operator, x and y are equal:
+
+let x = false;
+let y = new Boolean(false);
+When using the === operator, x and y are not equal:
+
+let x = false;
+let y = new Boolean(false);
+Note the difference between (x==y) and (x===y).
+
+(x == y) true or false?
+
+let x = new Boolean(false);
+let y = new Boolean(false);
+(x === y) true or false?
+
+let x = new Boolean(false);
+let y = new Boolean(false);
+Comparing two JavaScript objects always return false.
+)))))))))))))))))))))))))
+
+CONSTRUCTOR NOTES FROM CODER-DOST
 //Constructor function and the "new" object
 // We cannot use "arrow - function" as Constructor
 // call constructor function using "new" keyword
@@ -1423,9 +2083,158 @@ honda.breakMethod();
 honda.startEngine();
 console.log(honda.__proto__);
 
-//IMPORTANT NOTES
-//a) classes are not hoisted (In function we can call it above while declaring it below)
-//b) classes are also first class citizens(pass as an argument or return)
-//c) classes are executed in strict mode
+IMPORTANT NOTES
+a) classes are not hoisted (In function we can call it above while declaring it below)
+b) classes are also first class citizens(pass as an argument or return)
+c) classes are executed in strict mode
+
+
+OBJECT ORIENTED PROGRAMMING ---->  JAVASCRIPT ACCESSORS (Getters and Setters)
+please first visit -> https://www.w3schools.com/js/js_object_accessors.asp
+
+ECMAScript 5 (ES5 2009) introduced Getter and Setters.
+Getters and setters allow you to define Object Accessors (Computed Properties).
+GETTER AND SETTER METHOD : It allows you to define Object Accessor
+
+
+JavaScript Getter (The get Keyword)
+This example uses a lang property to get the value of the language property.
+
+Example
+// Create an object:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "en",
+  get lang() {
+    return this.language;
+  }
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+JavaScript Setter (The set Keyword)
+This example uses a lang property to set the value of the language property.
+
+Example
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "",
+  set lang(lang) {
+    this.language = lang;
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+ADVERTISEMENT
+
+JavaScript Function or Getter?
+What is the differences between these two examples?
+
+Example 1
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display data from the object using a method:
+document.getElementById("demo").innerHTML = person.fullName();
+Example 2
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.fullName;
+Example 1 access fullName as a function: person.fullName().
+
+Example 2 access fullName as a property: person.fullName.
+
+The second example provides a simpler syntax.
+
+Data Quality
+JavaScript can secure better data quality when using getters and setters.
+
+Using the lang property, in this example, returns the value of the language property in upper case:
+
+Example
+// Create an object:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "en",
+  get lang() {
+    return this.language.toUpperCase();
+  }
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+Using the lang property, in this example, stores an upper case value in the language property:
+
+Example
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "",
+  set lang(lang) {
+    this.language = lang.toUpperCase();
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+Why Using Getters and Setters?
+It gives simpler syntax
+It allows equal syntax for properties and methods
+It can secure better data quality
+It is useful for doing things behind-the-scenes
+Object.defineProperty()
+The Object.defineProperty() method can also be used to add Getters and Setters:
+
+A Counter Example
+// Define object
+const obj = {counter : 0};
+
+// Define setters and getters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+
+// Play with the counter:
+obj.reset;
+obj.add = 5;
+obj.subtract = 1;
+obj.increment;
+obj.decrement;
+
+NOTE : THE KEY IN OBJECT ARE KNOWN AS "PROPERTIES" 
 
 */
