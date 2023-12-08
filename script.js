@@ -2324,7 +2324,6 @@ JavaScript Accessors (Getters and Setters)
 ECMAScript 5 (ES5 2009) introduced Getter and Setters.
 
 Getters and setters allow you to define Object Accessors (Computed Properties).
-*/
 
 class Car {
   constructor(color, model) {
@@ -2365,3 +2364,48 @@ console.log(honda);
 console.log(honda.description);
 
 // conclusion : getter and setter are mainly used for abstraction like hiding the implementation part and displaying only the required part.
+
+*/
+// STATIC METHOD : Method which is not present on constructor "prototype" property but "constructor" itself
+// static method : can never inherit to all object
+// STATIC METHOD : this method is only available for Car class but not for instance objects.
+class Car {
+  constructor(color, model) {
+    this.color = color;
+    this.model = model;
+  }
+  // declaring a function not the property, hence need to call using function call
+  startEngine() {
+    console.log('this start engine belongs to Car class');
+  }
+
+  // static method : can be declared using static keyword inside class, but you need to use class name to declare static method outside the class without "static keyword".
+  // TO USE OBJECT INSIDE STATIC METHOD YOU NEED TO PASS THE OBJECTS AS PARAMETERS INSIDE  STATIC METHOD
+  // static methods are only accessible by Class name
+  static run(x) {
+    console.log('car is running');
+    console.log(x);
+    console.log(x.color);
+    console.log(x.model);
+  }
+}
+
+// static method/Property(variable) : can be created using class name or using "static keyword "
+Car.breakMethod = function () {
+  console.log('this is a break method of the car');
+};
+
+let honda = new Car('red', 2024);
+console.log(honda);
+
+// accessing as function
+honda.startEngine();
+// Such methods are only accessible by constructor only but not the object
+Car.breakMethod();
+
+// honda.run(); --> static methods are only accessible to the class but not the instance objects
+// honda.breakMethod(); --> static methods are only accessible to the class but not the instance objects
+
+// TO USE OBJECT INSIDE STATIC METHOD YOU NEED TO PASS THE OBJECTS AS PARAMETERS INSIDE  STATIC METHOD
+// static methods are only accessible by Class name
+Car.run(honda);
