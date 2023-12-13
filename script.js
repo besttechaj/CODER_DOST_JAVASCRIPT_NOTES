@@ -2366,6 +2366,10 @@ console.log(honda.description);
 // conclusion : getter and setter are mainly used for abstraction like hiding the implementation part and displaying only the required part.
 
 */
+
+/*
+OBJECT ORIENTED PROGRAMMING : STATIC METHOD 
+
 // STATIC METHOD : Method which is not present on constructor "prototype" property but "constructor" itself
 // static method : can never inherit to all object
 // STATIC METHOD : this method is only available for Car class but not for instance objects.
@@ -2409,3 +2413,67 @@ Car.breakMethod();
 // TO USE OBJECT INSIDE STATIC METHOD YOU NEED TO PASS THE OBJECTS AS PARAMETERS INSIDE  STATIC METHOD
 // static methods are only accessible by Class name
 Car.run(honda);
+
+NOTE:  We call static method using class Name because static method/variables are defined at class level. Hence we are unable to call static method using instance object. 
+
+Static methods are not accessible by class's instance object directly 
+
+Due to static method there is no need to create class's instance object to call it 
+
+some of the static method and their use >>>>>>>>>>
+
+Number.parseInt()
+JSON.parse()
+JSON.stringify()
+Array.from()
+*/
+
+/*
+OBJECT ORIENTED PROGRAMMING : INHERITANCE
+
+- INHERITANCE IS USED FOR CODE REUSABILITY
+- It is a relation between parent class and child class
+- Child class can access all the methods and properties of parent class
+
+*/
+// parent class
+class Car {
+  constructor(color, model) {
+    console.log('constructor belongs to car class');
+    this.model = model;
+    this.color = color;
+  }
+
+  startCarEngine() {
+    console.log('Start the car ---- engine');
+  }
+}
+
+//child class
+// class Bike extends Car {}
+
+class Bike extends Car {
+  //Adding some additional properties
+  constructor(model, color, carCapacity) {
+    console.log('constructor belongs to bike class');
+    //giving the model and color to parent class constructor
+    super(model, color);
+    this.carCapacity = carCapacity;
+  }
+
+  bikeMethod() {
+    console.log('this method belongs to bike class');
+  }
+}
+
+// object from Car class
+let honda = new Car('white', 2024);
+console.log('car class object : ', honda);
+
+// object from Bike Class
+let newBike = new Bike('Black', 2023, '1000cc');
+console.log('bike object :', newBike);
+
+console.log("prototype of CLASS BIKE'S newBike object is: ", newBike.__proto__);
+console.log("prototype of cLASS cAR'S honda object is: ", honda.__proto__);
+// 7 21
