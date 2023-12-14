@@ -2435,7 +2435,8 @@ OBJECT ORIENTED PROGRAMMING : INHERITANCE
 - It is a relation between parent class and child class
 - Child class can access all the methods and properties of parent class
 
-*/
+
+INHERITANCE USING CLASS BASED
 // parent class
 class Car {
   constructor(color, model) {
@@ -2443,11 +2444,11 @@ class Car {
     this.model = model;
     this.color = color;
   }
-
-  startCarEngine() {
+}
+// here we are declaring the prototype outside the class using Car.prototype.methodName
+  Car.prototype.startCarEngine = function(){
     console.log('Start the car ---- engine');
   }
-}
 
 //child class
 // class Bike extends Car {}
@@ -2468,12 +2469,60 @@ class Bike extends Car {
 
 // object from Car class
 let honda = new Car('white', 2024);
-console.log('car class object : ', honda);
 
 // object from Bike Class
 let newBike = new Bike('Black', 2023, '1000cc');
+
+console.log('car class object : ', honda);
 console.log('bike object :', newBike);
 
-console.log("prototype of CLASS BIKE'S newBike object is: ", newBike.__proto__);
 console.log("prototype of cLASS cAR'S honda object is: ", honda.__proto__);
-// 7 21
+console.log("prototype of CLASS BIKE'S newBike object is: ", newBike.__proto__);
+
+//NOTE: USING INHERITANCE WE ARE OBTAINING PROTO-TYPE CHAINING.
+
+// INHERITANCE USING FUNCTION BASED
+
+//QUES --> hOW IS IT POSSIBLE TO CREATE INHERITANCE FROM PROTOTYPE ???
+//PROTOTYPAL INHERITANCE (using constructor function)
+let Car = function (color, model) {
+  this.model = model;
+  this.color = color;
+};
+
+Car.prototype.startCarEngine = function () {
+  console.log('Start the car ---- engine');
+};
+
+let car1 = new Car('orange', 2022);
+
+let Bike = function (model, color, carCapacity) {
+  // Here we are calling the Car context inside bike context as given below :
+  Car.call(this, model, color);
+  // console.log('this stores', this);
+  this.carCapacity = carCapacity;
+};
+console.log('printing both constructor functions prototype before inheritance');
+console.log('prototype of car is : ', Car.prototype);
+console.log('prototype of bike is : ', Bike.prototype);
+// Inheriting from parent class
+// creating a prototype object for bike function and passing car's prototype as a parameter so that it stores all the data from car function
+// to store car's prototype we are calling class Object to create an object for us using (Object.create()) so that we can store the car's prototype
+// similar to example given below
+// let ajay = Object.create({ fname: 'Sunny' });
+// console.log(ajay);
+Bike.prototype = Object.create(Car.prototype);
+console.log('printing both constructor functions prototype after inheritance');
+console.log('prototype of car is : ', Car.prototype);
+console.log('prototype of bike is : ', Bike.prototype);
+
+// creating a new method inside Bike child class ie bike's constructor
+Bike.prototype.ownBike = function () {
+  console.log(`this bike is mine and belongs to child class`);
+};
+
+let bike1 = new Bike('white', 2024, '1000cc');
+console.log(car1, bike1);
+// 7 30
+
+*/
