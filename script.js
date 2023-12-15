@@ -2525,4 +2525,55 @@ let bike1 = new Bike('white', 2024, '1000cc');
 console.log(car1, bike1);
 // 7 30
 
+
+CHAINING METHODS
 */
+
+class BankAccount {
+  constructor(owner, pin) {
+    this.owner = owner;
+    this.pin = pin;
+    this.movements = [];
+    console.log('this stores: ', this);
+  }
+
+  getMovements() {
+    console.log(typeof this.movements);
+    console.log(this.movements);
+    console.log(`after getMovements this is: `, this);
+
+    return this;
+  }
+
+  deposit(val) {
+    console.log('currentDeposit: ', val);
+    console.log(`deposit: `, this.movements.push(val));
+    // return this.movements.push(val); // return type is number but due to push it returns length of the array
+    console.log(`after deposit this is: `, this);
+    return this;
+  }
+
+  withdraw(val) {
+    console.log('currentWithdraw: ', val);
+    console.log(`withdraw: `, this.deposit(-val));
+    return this;
+  }
+}
+
+let account1 = new BankAccount('zack', 2323);
+//WITHOUT CHAINING OF METHODS
+account1.deposit(100);
+account1.withdraw(50);
+
+console.log(`final submission: `, account1.getMovements());
+
+console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+let account2 = new BankAccount('priya kumari', 3322);
+//IMPORTANT NOTE******************************************************
+// FOR CHAINING OF METHODS IT IS MANDATORY FOR FUNCTIONS TO RETURN SAME TYPES OF VALUES INSTEAD OF RETURNING ARRAY, ARRAY'S LENGTH, NUMBER...DUE TO WHICH NEXT METHOD WILL NOT BE ABLE TO FETCH THE PREVIOUS FUNCTION S' RETURN DATA HENCE THROWS AN ERROR. SO IT IS BETTER TO RETURN OBJECT ITSELF DUE TO WHICH THE NEXT FUNCTION WILL EASILY FETCH ITS REQUIRED DATA FROM THE PREVIOUS FUNCTION'S RETURN OBJECT.
+// chaining of methods
+account2.deposit(1000).withdraw(400).withdraw(100).deposit(300);
+
+console.log(`final submission: `, account2.getMovements());
+
+console.log(account1.getMovements(), account2.getMovements());
