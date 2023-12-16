@@ -2523,11 +2523,13 @@ Bike.prototype.ownBike = function () {
 
 let bike1 = new Bike('white', 2024, '1000cc');
 console.log(car1, bike1);
-// 7 30
 
-
-CHAINING METHODS
 */
+
+/*
+OBJECT ORIENTED PROGRAMMING - OOPS
+
+CHAINING OF METHODS 
 
 class BankAccount {
   constructor(owner, pin) {
@@ -2577,3 +2579,113 @@ account2.deposit(1000).withdraw(400).withdraw(100).deposit(300);
 console.log(`final submission: `, account2.getMovements());
 
 console.log(account1.getMovements(), account2.getMovements());
+*/
+
+/*
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+ASYNCHRONOUS JAVASCRIPT
+
+// Any code which takes some time to return the output without working synchronously is known as asynchronous.
+//Asynchronous JavaScript is the programming method where operations are run independently allowing the program to continue running while waiting for certain tasks to complete. Synchronous JavaScript is the programming approach where tasks of a program are executed sequentially one at a time.
+//In synchronous method the code stop executing the next work until the previous work is not done. eg: live tv cricket match on social media platform
+
+console.log(1);
+console.log(2);
+// setTimeOut function (callback function, time)
+setTimeout(
+  () =>
+    console.log(`this is call back function which is Asynchronous in nature`),
+  3000
+);
+console.log(3);
+console.log(4);
+
+
+//XML HttpRequest : All modern browsers have a built-in XMLHttpRequest object to request data from a server.
+//XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+//Despite its name, XMLHttpRequest can be used to retrieve any type of data, not just XML.
+
+//If your communication needs to involve receiving event data or message data from a server, consider using server-sent events through the EventSource interface. For full-duplex communication, WebSockets may be a better choice.
+
+// The XMLHttpRequest object is a developers dream, because you can:
+
+// Update a web page without reloading the page
+// Request data from a server - after the page has loaded
+// Receive data from a server  - after the page has loaded
+// Send data to a server - in the background
+
+// Constructor
+// XMLHttpRequest()
+// The constructor initializes an XMLHttpRequest. It must be called before any other method calls.
+
+//to know more ... source : https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+
+*/
+
+let request = new XMLHttpRequest(); //calling the constructor which have prototype
+// request.readyState : initially zero
+// readyState shows the status of the request
+//XMLHttpRequest: readyState property
+//The XMLHttpRequest.readyState  property holds the status of the XMLHttpRequest.
+console.log(request, request.readyState);
+
+//The onreadystatechange property defines a function to be executed when the readyState changes.
+request.addEventListener('readystatechange', () => {
+  // console.log(request, request.readyState);
+  // we want to see the response after task completion ie last ready state which is [0-4]
+  if (request.readyState === 4) {
+    console.log(request.responseText);
+  }
+});
+
+//setting the request for retrieving data
+// open(): stored inside constructor's prototype
+// open('type_of_request',"URL")
+// use the link to get fake json data in response : https://jsonplaceholder.typicode.com/todos
+request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+
+//sending the request
+request.send();
+
+//Value	  ---->   State	  ---->   Description
+// 0	---->UNSENT ---->	Client has been created. open() not called yet.
+// 1	----> OPENED	----> open() has been called.
+// 2	----> HEADERS_RECEIVED ---->	send() has been called, and headers and status are available.
+// 3	----> LOADING ---->	Downloading; responseText holds partial data.
+// 4	----> DONE ------>	The operation is complete.
+
+//UNSENT : The XMLHttpRequest client has been created, but the open() method hasn't been called yet.
+
+// OPENED : open() method has been invoked. During this state, the request headers can be set using the setRequestHeader() method and the send() method can be called which will initiate the fetch.
+
+// HEADERS_RECEIVED: send() has been called, all redirects (if any) have been followed and the response headers have been received.
+
+// LOADING: Response's body is being received. If responseType is "text" or empty string, responseText will have the partial text response as it loads.
+
+// DONE: The fetch operation is complete. This could mean that either the data transfer has been completed successfully or failed.
+
+//Property	-----> Description
+// onreadystatechange	-----> Defines a function to be called when the readyState property changes
+// readyState ---->	Holds the status of the XMLHttpRequest.like
+// 0: request not initialized
+// 1: server connection established
+// 2: request received
+// 3: processing request
+// 4: request finished and response is ready
+// status	----> 200: "OK". some others are :
+// 403: "Forbidden"
+// 404: "Page not found"
+// For a complete list go to the Http Messages Reference
+// statusText	Returns the status-text (e.g. "OK" or "Not Found")
+// The onreadystatechange function is called every time the readyState changes.
+
+// When readyState is 4 and status is 200, the response is ready.
+
+// Http response status code :
+// Informational response (100-199)
+// successful response (200-299)
+// Redirection Message (300-399)
+// Client error responses (400-499)// bad request by the client that is user
+// Server error response (500-599)
