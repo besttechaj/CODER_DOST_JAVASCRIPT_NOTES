@@ -2582,7 +2582,13 @@ console.log(account1.getMovements(), account2.getMovements());
 */
 
 /*
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//todo
+// to understand callback hell and promise ...please go through topics like javascript working? asynchronous javascript? since javascript is single-threaded language then how a single-threaded it deals with n no. of request?why we use callback for request and its advantage?why callback hell is not good?How we use promise to overcome callback hell?
+//ANSWER
+//read this page : https://www.javatpoint.com/callback-hell-in-javascript
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 ASYNCHRONOUS JAVASCRIPT
@@ -2815,7 +2821,7 @@ let todo = function (resource, callback) {
 
 //calling todo function and passing another function to it for error detection
 // passing the "source"--> json data file
-// HERE WE ARE CREATING CHAIN OF TODO FUNCTION(CALLBACK) by using nested loop
+// HERE WE ARE CREATING CHAIN OF TODO FUNCTION(CALLBACK) by using nested callbacks
 //TASK-01
 todo('data.json', (error, Data) => {
   console.log('Running error detection function');
@@ -2838,3 +2844,4 @@ todo('data.json', (error, Data) => {
 //************************************************************************************** */
 
 //SOLUTION FOR CALLBACK HELL : USING PROMISE
+8 09 min
