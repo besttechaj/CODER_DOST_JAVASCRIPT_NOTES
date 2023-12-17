@@ -2622,7 +2622,7 @@ console.log(4);
 
 //to know more ... source : https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
-*/
+
 
 let request = new XMLHttpRequest(); //calling the constructor which have prototype
 // request.readyState : initially zero
@@ -2635,7 +2635,7 @@ console.log(request, request.readyState);
 request.addEventListener('readystatechange', () => {
   // console.log(request, request.readyState);
   // we want to see the response after task completion ie last ready state which is [0-4]
-  if (request.readyState === 4) {
+  if (request.readyState === 4 && request.status == 200) {
     console.log(request.responseText);
   }
 });
@@ -2689,3 +2689,152 @@ request.send();
 // Redirection Message (300-399)
 // Client error responses (400-499)// bad request by the client that is user
 // Server error response (500-599)
+**************************************************************************************8
+
+*/
+
+/*
+//USING CALLBACK FUNCTION FETCHING DATA THROUGH URL/API
+
+let todo = function (callback) {
+  let request = new XMLHttpRequest();
+  console.log(request, request.readyState);
+
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4 && request.status == 200) {
+      // console.log(request.responseText);
+      // A common use of JSON is to exchange data to/from a web server.When receiving data from a web server, the data is always a string.Parse the data with JSON.parse(), and the data becomes a JavaScript object like Array.
+      let javascript_obj = JSON.parse(request.responseText);
+      //callback(error, data){}: since this block has status_code=200 hence use error as undefined
+      callback(undefined, javascript_obj);
+    } else if (request.readyState === 4) {
+      // console.log(`data could not be fetch`);
+      //callback(error, data){}: since this block has error hence use data as undefined
+      callback(
+        'Since all readyState [0-4] has covered but the Data could not found',
+        undefined
+      );
+    }
+  });
+
+  //set up the request
+  request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+
+  //sending the request
+  request.send();
+};
+
+//calling todo function and passing another function to it for error detection
+todo((error, Data) => {
+  console.log('Running error detection function');
+  // if error is true then display error else display data
+  error ? console.log(error) : console.log(Data);
+});
+
+// proving that all this is working as Asynchronous
+console.log(1);
+console.log(2);
+console.log(3);
+
+//
+
+*/
+/********************************************************************************** */
+
+/*
+//USING CALLBACK FUNCTION FETCHING DATA THROUGH LOCALLY STORED JSON FILE
+
+let todo = function (callback) {
+  let request = new XMLHttpRequest();
+  console.log(request, request.readyState);
+
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4 && request.status == 200) {
+      // console.log(request.responseText);
+      // A common use of JSON is to exchange data to/from a web server.When receiving data from a web server, the data is always a string.Parse the data with JSON.parse(), and the data becomes a JavaScript object like Array.
+      let javascript_obj = JSON.parse(request.responseText);
+      //callback(error, data){}: since this block has status_code=200 hence use error as undefined
+      callback(undefined, javascript_obj);
+    } else if (request.readyState === 4) {
+      // console.log(`data could not be fetch`);
+      //callback(error, data){}: since this block has error hence use data as undefined
+      callback(
+        'Since all readyState [0-4] has covered but the Data could not found',
+        undefined
+      );
+    }
+  });
+
+  //set up the request
+  //You can fetch the data through api/url, locally created file
+  request.open('GET', 'data.json');
+
+  //sending the request
+  request.send();
+};
+
+//calling todo function and passing another function to it for error detection
+todo((error, Data) => {
+  console.log('Running error detection function');
+  // if error is true then display error else display data
+  error ? console.log(error) : console.log(Data);
+});
+*/
+//************************************************************** */
+
+/*
+
+// new topic : reason why call is not preferred ???????????????
+// Answer : It makes code more complex to understand.Because if you get any error between callback which will not be an easy task to find out the error since you have pass one function inside another and so on. Also for big operations where you are fetching, posting,updating,editing data via callback using API Calls callback is not preferred. callback can collapse all task if any major problem arise.
+//CALLBACK HELL CHAIN OF CALLBACK FUNCTION INSIDE ONE ANOTHER
+
+// here resource --> json data file
+let todo = function (resource, callback) {
+  let request = new XMLHttpRequest();
+  console.log(request, request.readyState);
+
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4 && request.status == 200) {
+      let javascript_obj = JSON.parse(request.responseText);
+
+      callback(undefined, javascript_obj);
+    } else if (request.readyState === 4) {
+      callback(
+        'Since all readyState [0-4] has covered but the Data could not found',
+        undefined
+      );
+    }
+  });
+
+  //set up the request
+  request.open('GET', resource);
+
+  //sending the request
+  request.send();
+};
+
+//calling todo function and passing another function to it for error detection
+// passing the "source"--> json data file
+// HERE WE ARE CREATING CHAIN OF TODO FUNCTION(CALLBACK) by using nested loop
+//TASK-01
+todo('data.json', (error, Data) => {
+  console.log('Running error detection function');
+  error ? console.log(error) : console.log(Data);
+
+  // TASK-02 (callback hell)
+  todo('ron1.json', (error, Data) => {
+    console.log('Running error detection function');
+    error ? console.log(error) : console.log(Data);
+
+    // TASK-03 (CALLback hell)
+    todo('zenet.json', (error, Data) => {
+      console.log('Running error detection function');
+      error ? console.log(error) : console.log(Data);
+    });
+  });
+});
+
+*/
+//************************************************************************************** */
+
+//SOLUTION FOR CALLBACK HELL : USING PROMISE
