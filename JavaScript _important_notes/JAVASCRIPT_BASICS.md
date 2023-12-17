@@ -270,3 +270,7 @@ JavaScript considers everything as an object, such as strings, arrays, and funct
 The callback functions are executed asynchronously and allow code to continue running without waiting to complete the asynchronous task.
 
 source : <https://www.javatpoint.com/callback-hell-in-javascript>
+
+<!-- easy words  to understand promise and async/ await -->
+
+<https://www.geeksforgeeks.org/difference-between-promise-and-async-await-in-node-js/>

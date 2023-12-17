@@ -2844,4 +2844,88 @@ todo('data.json', (error, Data) => {
 //************************************************************************************** */
 
 //SOLUTION FOR CALLBACK HELL : USING PROMISE
-8 09 min
+/*
+BASIC SYNTAX FOR PROMISE
+// new Promise(callback_function(resolve, reject))
+let getSomeThing = () => {
+  return new Promise((resolve, reject) => {
+    // resolve is used to get the data after operation
+    // resolve({
+    //   id: 23,
+    //   name: 'Pranjali',
+    // });
+    reject('unable to process data');
+  });
+};
+
+// .then() ---> if your promise is resolved, it will call then() method to tell what to do next with the data
+// .catch()---> if your promise is rejected, it will call catch() method to tell something is wrong
+getSomeThing()
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+
+*/
+
+//***************************************************************************************************** */
+
+/*
+SOME OPERATION USING PROMISE
+
+let todo = (resource, callback) => {
+  return new Promise((resolve, reject) => {
+    let request = new XMLHttpRequest();
+    console.log(request, request.readyState);
+
+    request.addEventListener('readystatechange', () => {
+      if (request.readyState === 4 && request.status == 200) {
+        let javascript_obj = JSON.parse(request.responseText);
+        resolve(javascript_obj);
+      } else if (request.readyState === 4) {
+        reject((err) => console.log('error while fetching the data: ', err));
+      }
+    });
+
+    //set up the request
+    request.open('GET', resource);
+
+    //sending the request
+    request.send();
+  });
+};
+
+todo('data.json')
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+*/
+//********************************************************************************************************** */
+/*
+
+*/
+
+//CHAINING OF PROMISES
+
+let todo = (resource, callback) => {
+  return new Promise((resolve, reject) => {
+    let request = new XMLHttpRequest();
+    console.log(request, request.readyState);
+
+    request.addEventListener('readystatechange', () => {
+      if (request.readyState === 4 && request.status == 200) {
+        let javascript_obj = JSON.parse(request.responseText);
+        resolve(javascript_obj);
+      } else if (request.readyState === 4) {
+        reject((err) => console.log('error while fetching the data: ', err));
+      }
+    });
+
+    //set up the request
+    request.open('GET', resource);
+
+    //sending the request
+    request.send();
+  });
+};
+
+todo('data.json')
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
