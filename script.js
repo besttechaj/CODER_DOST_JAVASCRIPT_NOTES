@@ -2899,9 +2899,6 @@ todo('data.json')
 */
 //********************************************************************************************************** */
 /*
-
-*/
-
 //CHAINING OF PROMISES
 
 let todo = (resource, callback) => {
@@ -2925,7 +2922,24 @@ let todo = (resource, callback) => {
     request.send();
   });
 };
-
+//chaining of promises
+// TASK -01
 todo('data.json')
-  .then((data) => console.log(data))
+  .then((data) => {
+    console.log('Promise -1 resolved: ', data);
+    // TASK -02
+    return todo('ron.json');
+  })
+  .then((data2) => {
+    console.log('Promise -2 resolved: ', data2);
+    //TASK- 03
+    return todo('zenet.json');
+  })
+  .then((data3) => {
+    console.log('Promise -3 resolved: ', data3);
+  })
   .catch((error) => console.log(error));
+
+// NOTE : catch is only applicable for 1st-error occurrence, catch will not work for more than one error
+*/
+/********************************************************************************************************* */
