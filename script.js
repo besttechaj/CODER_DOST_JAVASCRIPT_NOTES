@@ -2943,3 +2943,28 @@ todo('data.json')
 // NOTE : catch is only applicable for 1st-error occurrence, catch will not work for more than one error
 */
 /********************************************************************************************************* */
+/*
+ASYNCHRONOUS
+FETCH Api 
+- MORE EASIER THAN AJAX(XMLHttpRequest)
+-The Fetch API interface allows web browser to make HTTP requests to web servers.
+😀 No need for XMLHttpRequest anymore.
+*/
+/************************************************************************************************************* */
+
+fetch('data.json')
+  .then((response) => {
+    console.log('Data in the Api has been successfully fetched');
+    console.log(response.status);
+    console.log(typeof response); // Promise object
+    // we need to convert the promise object into json data
+    return response.json(); // since json() is an asynchronous method hence we need to return it and call then() method again
+    //Here we are fetching a JSON file across the network, parsing it, and printing the data to the console. The simplest use of fetch() takes one argument — the path to the resource you want to fetch — and does not directly return the JSON response body but instead returns a promise that resolves with a Response object.The Response object, in turn, does not directly contain the actual JSON response body but is instead a representation of the entire HTTP response. So, to extract the JSON body content from the Response object, we use the json() method, which returns a second promise that resolves with the result of parsing the response body text as JSON.
+  })
+  .then((data) => {
+    console.log(typeof data); // Array object
+    console.log(data);
+  })
+  .catch((error) => console.log(error));
+
+  8 22
