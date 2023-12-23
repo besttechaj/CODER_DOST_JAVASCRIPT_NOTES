@@ -2844,6 +2844,15 @@ todo('data.json', (error, Data) => {
 //************************************************************************************** */
 
 //SOLUTION FOR CALLBACK HELL : USING PROMISE
+// Promises:
+
+// A Promise in NodeJS is similar to a promise in real life. It is an assurance that something will be done. Promise is used to keep track of whether the asynchronous event has been executed or not and determines what happens after the event has occurred. It is an object having 3 states namely:
+
+// Pending: Initial State, before the event has happened.
+// Resolved: After the operation completed successfully.
+// Rejected: If the operation had error during execution, the promise fails.
+// Example: While requesting data from a database server, the Promise is in a pending state until the data is received. If the data is received successfully, then the Promise is in resolved state and if the data could not be received successfully, the Promise is in the rejected state.
+//Error Handling of Promises: For a successfully resolved promise, we use .then() method and for rejected promise, we use .catch() method. To run a code after the promise has been handled using .then() or .catch() method, we can .finally() method. The code inside .finally() method runs once regardless of the state of the promise.
 /*
 BASIC SYNTAX FOR PROMISE
 // new Promise(callback_function(resolve, reject))
@@ -2949,8 +2958,6 @@ FETCH Api
 - MORE EASIER THAN AJAX(XMLHttpRequest)
 -The Fetch API interface allows web browser to make HTTP requests to web servers.
 😀 No need for XMLHttpRequest anymore.
-*/
-/************************************************************************************************************* */
 
 fetch('data.json')
   .then((response) => {
@@ -2966,5 +2973,71 @@ fetch('data.json')
     console.log(data);
   })
   .catch((error) => console.log(error));
+*/
+/************************************************************************************************************* */
 
-  8 22
+/*
+Async/Await:
+
+Async/Await is used to work with promises in asynchronous functions. It is basically syntactic sugar for promises. It is just a wrapper to restyle code and make promises easier to read and use. It makes asynchronous code look more like synchronous/procedural code, which is easier to understand.
+
+await can only be used in async functions. It is used for calling an async function and waits for it to resolve or reject. await blocks the execution of the code within the async function in which it is located. 
+
+Error Handling in Async/Await: For a successfully resolved promise, we use try and for rejected promise, we use catch. To run a code after the promise has been handled using try or catch, we can .finally() method. The code inside .finally() method runs once regardless of the state of the promise.
+
+//Async await with return statement
+let getTodos = async () => {
+  //here the await is working like a .then() method
+  let response = await fetch('data.json'); // return Promise object
+  console.log(response);
+  // custom error
+  if (response.status !== 200) {
+    throw new Error('custom error: Error in fetching the file');
+  }
+  // Now fetching the data from the promise object
+  //here the await is working like a .then() method
+  let data = await response.json();
+  return data;
+};
+
+getTodos()
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err.message));
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Async await without return statement
+
+let getTodos = async () => {
+  //here the await is working like a .then() method
+  let response = await fetch('data.json');
+  let response2 = await fetch('ron.json');
+
+  let data = await response.json();
+  let data2 = await response2.json();
+  console.log(data, data2);
+};
+getTodos();
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+//Error handling using try and catch method instead of using .then and .catch method
+try {
+  let getTodos = async () => {
+    //here the await is working like a .then() method
+    let response = await fetch('data.json');
+    let response2 = await fetch('ron.json');
+
+    let data = await response.json();
+    let data2 = await response2.json();
+    console.log(data, data2);
+  };
+} catch (error) {
+  console.log(error);
+}
+getTodos();
+
+>>>>>>>>>>>>>>>>
+PromiseAndAwait.png
+>>>>>>>>>>>>>>>>
+*/
+/****************************************************************************************************************** */
+
+8 44
