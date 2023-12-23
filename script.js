@@ -3039,5 +3039,51 @@ PromiseAndAwait.png
 >>>>>>>>>>>>>>>>
 */
 /****************************************************************************************************************** */
+//
+//****************************************************************************************************************** */
+/*
+// ECMA-SCRIPT ( ES6 )
 
-8 44
+//destructuring of array
+
+//Example 1
+// task --> To assign every array items to variables using destructuring
+let items = [5, 6, 7, 8];
+let [a, b, c, d] = items;
+console.log(a, b, c, d);
+[d, e, f, g] = 'dafa';
+let add = [d, e, f, g];
+console.log(add);
+
+//Example 2
+let hotel = {
+  name: 'ambika',
+  location: 'ghatkopar',
+  category: ['chinese', 'italian', 'English'],
+};
+let [first, second] = hotel.category;
+console.log(first, second);
+//to skip some data while destructuring
+let [a1, , c1] = hotel.category;
+console.log(a1, c1);
+
+//Example3
+let person = {
+  name: 'ambika',
+  age: 'ghatkopar',
+  language: ['english', 'hindi', 'french'],
+};
+// to swap the category in the array without destructuring
+let [primary, , secondary] = person.language;
+console.log('before swapping primary and secondary were: ', primary, secondary);
+let temp = primary;
+primary = secondary;
+secondary = temp;
+console.log('after swapping primary and secondary were: ', primary, secondary);
+
+// to swap the category in the array using destructuring
+console.log('before swapping primary and secondary were: ', primary, secondary);
+[primary, secondary] = [secondary, primary];
+console.log('before swapping primary and secondary were: ', primary, secondary);
+*/
+//Example4 : destructuring of nested array
