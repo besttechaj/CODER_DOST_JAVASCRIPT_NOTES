@@ -3085,5 +3085,52 @@ console.log('after swapping primary and secondary were: ', primary, secondary);
 console.log('before swapping primary and secondary were: ', primary, secondary);
 [primary, secondary] = [secondary, primary];
 console.log('before swapping primary and secondary were: ', primary, secondary);
-*/
 //Example4 : destructuring of nested array
+let [a, d, [b, c], e] = [21, 22, [44, 46], 5];
+console.log(a, b, c, d, e);
+
+
+//Destructuring of objects : Need to match the names that is key of the object whereas in Array need to match the position only
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  //nested objects
+  openingHours: {
+    sunday: {
+      open: '9am',
+      close: '10pm',
+    },
+    monday: {
+      open: '10am',
+      close: '12pm',
+    },
+  },
+};
+
+// let { name, Location, mainMenu } = hotel;
+// console.log('name of hotel is: ', name);
+// console.log('location of hotel is: ', Location);
+// console.log('mainMenu of hotel is: ', mainMenu);
+//set customize name to object property
+// let { name: newName, Location: newlocation, mainMenu: newMenu } = hotel;
+// console.log(newName, newlocation, newMenu);
+//setting default values....if the key name doesn't match then default value will be assigned
+// let { name, Menu = [], categories = [] } = hotel;
+// console.log(name);
+// console.log(Menu);
+// console.log(categories);
+//Destructuring of nested objects :
+let { name, openingHours } = hotel;
+console.log(name);
+console.log('All opening hours are: ', openingHours);
+let { sunday, monday } = openingHours;
+console.log('sunday timing is:', sunday);
+console.log('monday timing is:', monday);
+let {
+  sunday: { open, close },
+} = openingHours;
+console.log(open, close);
+*/
