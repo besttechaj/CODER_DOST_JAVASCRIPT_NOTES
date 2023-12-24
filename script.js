@@ -3175,12 +3175,81 @@ console.log(copyArray);
 copyArray[1] = 'Samosa';
 console.log(copyArray);
 console.log(updatedMainMenu);
-*/
+
 
 //we can use spread operators on strings
-let passion = 'Programming';
-console.log(...passion); //separated letters
-//above is same as
-console.log('p', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g');
+// let passion = 'Programming';
+// console.log(...passion); //separated letters
+// //above is same as
+// console.log('p', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g');
 
 //Rest patterns and parameters : Opposite of spread operator
+
+//REST OPERATOR ON ARRAY
+// spread(...)Operator It is present in the RHS of "=" operator
+let nums = [2, 3, 4, 5, 6];
+let newArr = [10, 11, ...nums];
+console.log(newArr);
+
+//Rest(...)Operator Get elements and packed them into array
+//use in LHS
+let [a, b, ...rest] = nums; //starting two elements of nums array will be assigned to a,b variable and remaining elements will be assigned to ...rest operator
+console.log(a, b);
+console.log(...rest);
+
+//REST OPERATORS ON NESTED OBJECTS
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  //nested objects
+  openingHours: {
+    sunday: {
+      open: '9am',
+      close: '10pm',
+    },
+    monday: {
+      open: '10am',
+      close: '12pm',
+    },
+    tuesday: {
+      open: '12pm',
+      close: '3pm',
+    },
+    wednesday: {
+      open: '11am',
+      close: '2pm',
+    },
+  },
+};
+
+let { sunday, ...weekdays } = hotel.openingHours;
+console.log(sunday);
+console.log(weekdays);
+
+
+//SHORT CIRCUITING using (&&, ||) operator
+
+//falsy values => 0, false, null, undefined, ''(empty string)
+
+//AND && operator(output is true if all input is true)
+// let result = 1000 && 'this is a string';
+// console.log(result);
+// let result2 = null && 'game';
+// console.log(result2); //falsy due to null (once get false, it will not move towards the next operand)
+// let result3 = '' && 101;
+// console.log(result3); //falsy due to empty string(once get false, it will not move towards the next operand)
+// let result4 = 'random' && true && 'coders'; // if found true then moves for next operand
+// console.log(result4);
+//OR || operator(output is true if any input is true)
+let result = 0 || 'coders'; //output is true if any input is true
+console.log(result);
+let result1 = null || 'programmers' || 'gamers' || undefined; //if output is once true it stops going to next result
+console.log(result1);
+let result2 = null || '' || false || undefined;
+console.log(result2); //output is false if all input are falsy
+
+*/
+
+//Nullish coalescing operator (??)
