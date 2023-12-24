@@ -3133,4 +3133,54 @@ let {
   sunday: { open, close },
 } = openingHours;
 console.log(open, close);
+
+
+//Spread Operator(Unpacking of array elements)
+
+// let nums = [1, 32, 4, 5];
+// console.log(...nums);
+// //use case
+// let newArray = ['sa', 're', 'ga', ...nums];
+// console.log(newArray);
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  //nested objects
+  openingHours: {
+    sunday: {
+      open: '9am',
+      close: '10pm',
+    },
+    monday: {
+      open: '10am',
+      close: '12pm',
+    },
+  },
+};
+
+let updatedMainMenu = [...hotel.mainMenu, 'FOOD-11', 'FOOD-12'];
+console.log(updatedMainMenu);
+
+//Join 2 arrays
+let arr = [100, 101, 102];
+let joinedArray = [...arr, ...updatedMainMenu];
+console.log(joinedArray);
+
+//create shallow copy using spread operator
+let copyArray = [...updatedMainMenu];
+console.log(copyArray);
+copyArray[1] = 'Samosa';
+console.log(copyArray);
+console.log(updatedMainMenu);
 */
+
+//we can use spread operators on strings
+let passion = 'Programming';
+console.log(...passion); //separated letters
+//above is same as
+console.log('p', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g');
+
+//Rest patterns and parameters : Opposite of spread operator
