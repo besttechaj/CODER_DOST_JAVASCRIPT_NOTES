@@ -3250,6 +3250,16 @@ console.log(result1);
 let result2 = null || '' || false || undefined;
 console.log(result2); //output is false if all input are falsy
 
-*/
 
 //Nullish coalescing operator (??)
+
+let numGuests = 0;
+let result = numGuests || 10;
+console.log(result);
+//for nullish coalescing operator(??) only null and undefined are false values
+let result2 = numGuests ?? 10;
+console.log(result2); //0 which is true for nullish hence it not move forwarded for next operation. It excepts all true except null and undefined literals
+let result3 = undefined ?? null ?? numGuests;
+console.log(result3); //0 which is true for nullish hence it not move forwarded for next operation. It excepts all true except null and undefined literals
+
+*/
