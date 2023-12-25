@@ -3262,4 +3262,103 @@ console.log(result2); //0 which is true for nullish hence it not move forwarded 
 let result3 = undefined ?? null ?? numGuests;
 console.log(result3); //0 which is true for nullish hence it not move forwarded for next operation. It excepts all true except null and undefined literals
 
+FOR-of loop
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  specialFood: ['SPECIAL_FOOD-A', 'SPECIAL_FOOD-B', 'SPECIAL_FOOD-C'],
+  //nested objects
+  openingHours: {
+    sunday: {
+      open: '9am',
+      close: '10pm',
+    },
+    monday: {
+      open: '10am',
+      close: '12pm',
+    },
+    tuesday: {
+      open: '12pm',
+      close: '3pm',
+    },
+    wednesday: {
+      open: '11am',
+      close: '2pm',
+    },
+  },
+};
+
+let menu = [...hotel.mainMenu, ...hotel.specialFood];
+// console.log(menu);
+
+// for (let ele of menu) console.log(ele);
+
+//to get the entries from the loop
+// for (let ele of menu.entries()) {
+//   console.log(ele);
+// }
+
+//to get the entries from the loop
+// for (let ele of menu.entries()) {
+// every ele has a separate array [first_position_iterable_number, second_position_itemPresent]
+//   console.log(`${ele[0] + 1} : ${ele[1]}`);
+// }
+
+//to get the index number with value from the loop
+// for (let [i, ele] of menu.entries()) {
+// every ele has a separate array [first_position_iterable_number, second_position_itemPresent]
+//   console.log(i);
+//   console.log(`${i + 1} : ${ele}`);
+// }
+
+Enhanced Object Literals :
+
+Before es6 vs after es6
+let openingHours = {
+  sunday: {
+    open: '9am',
+    close: '10pm',
+  },
+  monday: {
+    open: '10am',
+    close: '12pm',
+  },
+  tuesday: {
+    open: '12pm',
+    close: '3pm',
+  },
+  wednesday: {
+    open: '11am',
+    close: '2pm',
+  },
+};
+
+let menuType = 'PLATINUM MENU';
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  specialFood: ['SPECIAL_FOOD-A', 'SPECIAL_FOOD-B', 'SPECIAL_FOOD-C'],
+  //previously before es6 we need to write like this to match the name
+  // openingHours: openingHours,
+  //after es6 we directly mention
+  openingHours,
+  //previously before es6 we need to write function like this
+  order: function () {
+    console.log('previous way to write');
+  },
+  //after es6 we directly mention function like this
+  order2() {
+    console.log('new way to declare function');
+  },
+
+  // changing the name of the key inside object after es6
+  [menuType]: ['Different food items...'],
+};
+console.log(hotel);
 */
