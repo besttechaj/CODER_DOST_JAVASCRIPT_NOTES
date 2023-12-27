@@ -3522,3 +3522,36 @@ console.log(restaurantMap.get(false));
 console.log(restaurantMap.size);
 
 */
+
+//******************************************************************************************************************************************************************************* */
+
+/*
+//Modern Javascript Modules, and Toolings
+
+// "Exporting and Importing ES-6 Modules"
+
+// importing
+// import any file data
+// can use different names after importing
+// for changing name "as" keyword is mandatory
+// while exporting the file "export" keyword is mandatory
+// import { order, laptopPrice as lappyPrice, quant } from './Product.js';
+// console.log('importing module');
+// order('jack', 'Laptop');
+// console.log('laptop price is: ', lappyPrice);
+// console.log('quantity is: ', quant);
+>>>>>>>>>>>>>>>>>>>>>>>
+// to import all data from file with just single keyword "*"
+// now singleVariable will be treated as object
+// import * as singleVariable from './Product.js';
+// console.log(singleVariable);
+// singleVariable.order('shivani', 'smart phone');
+// console.log(singleVariable.laptopPrice);
+// console.log(singleVariable.quant);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//default export ---> only this single variable will be export
+// export default order;
+import anyName from './Product.js';
+anyName('john', 'bike');
+anyName('paul', 'Pizza');
+*/
