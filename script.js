@@ -3555,3 +3555,28 @@ import anyName from './Product.js';
 anyName('john', 'bike');
 anyName('paul', 'Pizza');
 */
+//****************************************************************************************************************************************************************************** */
+/*
+Top level await ES2022
+
+Before ES2022 we can only use "await" oly inside "async function"
+But in ES2022 Introduced in "top level await" : It means now we can use "await" outside the async function
+
+
+//example without top level await
+console.log('started execution...');
+let todos = async () => {
+  let response = await fetch('https://jsonplaceholder.typicode.com/todos');
+  let data = await response.json();
+  console.log(data);
+};
+todos();
+console.log('completed execution...');
+//example with top level await
+console.log('starting....');
+let response = await fetch('https://jsonplaceholder.typicode.com/todos');
+let data = await response.json();
+console.log(data);
+//top level await only disadvantage is that it blocks the file execution hence no async operation can be performed
+console.log('ending...');
+*/
