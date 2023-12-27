@@ -3580,3 +3580,22 @@ console.log(data);
 //top level await only disadvantage is that it blocks the file execution hence no async operation can be performed
 console.log('ending...');
 */
+
+// modern javascript and tooling
+//IIFE- Immediately invoked function expression
+let resultIIFE = (function () {
+  console.log('run.............');
+  let orders = [];
+  let addToCart = function (product, quantity) {
+    console.log(`${product} ordered ${quantity}`);
+    orders.push({ product, quantity });
+  };
+  return {
+    orders,
+    addToCart,
+  };
+})();
+
+resultIIFE.addToCart('BIRYANI', 10);
+resultIIFE.addToCart('PIZZA', 5);
+console.log(resultIIFE.orders);
