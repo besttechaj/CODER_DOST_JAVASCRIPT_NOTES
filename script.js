@@ -3495,32 +3495,30 @@ console.log(str);
 for (let item of str) {
   console.log(item);
 }
+
+
+
+//MAP
+//It is a data structure which is used to map values into key
+//In map the data types of keys can be of "any"
+
+//Map is much similar to object
+// creating one map object
+let restaurantMap = new Map();
+//adding key and value pair inside map
+restaurantMap.set('address-1', 'Mumbai');
+restaurantMap.set('address-2', 'Lucknow');
+// to add more values we can use chaining
+restaurantMap
+  .set('address-3', 'Delhi')
+  .set(true, 'We are open today')
+  .set(false, 'We are close today');
+console.log(restaurantMap);
+//getting the values by passing key name
+console.log(restaurantMap.get('address-3'));
+console.log(restaurantMap.get(true));
+console.log(restaurantMap.get(false));
+//to get the map size
+console.log(restaurantMap.size);
+
 */
-
-let openingHours = {
-  sunday: {
-    open: '9am',
-    close: '10pm',
-  },
-  monday: {
-    open: '10am',
-    close: '12pm',
-  },
-  tuesday: {
-    open: '12pm',
-    close: '3pm',
-  },
-  wednesday: {
-    open: '11am',
-    close: '2pm',
-  },
-};
-
-let hotel = {
-  name: 'Taj hotel',
-  Location: 'Mumbai',
-  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
-  mainMenu: ['foodA', 'foodB', 'foodC'],
-  specialFood: ['SPECIAL_FOOD-A', 'SPECIAL_FOOD-B', 'SPECIAL_FOOD-C'],
-  openingHours,
-};
