@@ -3361,4 +3361,106 @@ let hotel = {
   [menuType]: ['Different food items...'],
 };
 console.log(hotel);
+
+OPTIONAL CHAINING (?.)
+let openingHours = {
+  sunday: {
+    open: '9am',
+    close: '10pm',
+  },
+  monday: {
+    open: '10am',
+    close: '12pm',
+  },
+  tuesday: {
+    open: '12pm',
+    close: '3pm',
+  },
+  wednesday: {
+    open: '11am',
+    close: '2pm',
+  },
+};
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  specialFood: ['SPECIAL_FOOD-A', 'SPECIAL_FOOD-B', 'SPECIAL_FOOD-C'],
+  openingHours,
+};
+console.log(hotel);
+
+// let us suppose we want to check this hotel open on saturday or not
+// if yes then at what time
+// console.log(hotel.openingHours.saturday.open); //since saturday is not present hence it will throw error
+
+//to avoid such error : two methods
+// method-1 : Without optional chaining
+
+if (hotel.openingHours && hotel.openingHours.saturday) {
+  console.log(hotel.openingHours.saturday.open);
+} else {
+  console.log('Not open on saturday');
+}
+// method-2 : With optional chaining
+// here In optional chaining it will check previous value of the operator=>null or undefined
+console.log(hotel.openingHours?.saturday?.open); // undefined....returns undefined or null instead of error
+console.log(hotel.openingHours?.sunday?.open); // result
+
+
+
+LOOPING OBJECTS (object_keys, object_values, entries)
+object are non iterable but indirectly we can...
 */
+
+let openingHours = {
+  sunday: {
+    open: '9am',
+    close: '10pm',
+  },
+  monday: {
+    open: '10am',
+    close: '12pm',
+  },
+  tuesday: {
+    open: '12pm',
+    close: '3pm',
+  },
+  wednesday: {
+    open: '11am',
+    close: '2pm',
+  },
+};
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  specialFood: ['SPECIAL_FOOD-A', 'SPECIAL_FOOD-B', 'SPECIAL_FOOD-C'],
+  openingHours,
+};
+
+// task - to create  array of properties/keys from an object given above
+let properties = Object.keys(openingHours);
+console.log(properties);
+//to print array element
+for (let key of properties) {
+  console.log(key);
+}
+// task - to create  array of values from an object given above
+let values = Object.values(openingHours);
+console.log(values);
+//to print array element
+for (let val of values) {
+  console.log(val);
+}
+// task - to create  array of key and value pair from an object given above
+let entry = Object.entries(openingHours);
+console.log(entry);
+//to print array element
+for (let pair of entry) {
+  console.log(pair);
+}
