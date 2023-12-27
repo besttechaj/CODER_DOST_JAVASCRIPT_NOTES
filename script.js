@@ -3413,7 +3413,6 @@ console.log(hotel.openingHours?.sunday?.open); // result
 
 LOOPING OBJECTS (object_keys, object_values, entries)
 object are non iterable but indirectly we can...
-*/
 
 let openingHours = {
   sunday: {
@@ -3458,9 +3457,11 @@ for (let val of values) {
   console.log(val);
 }
 // task - to create  array of key and value pair from an object given above
-let entry = Object.entries(openingHours);
-console.log(entry);
-//to print array element
-for (let pair of entry) {
-  console.log(pair);
+let entryList = Object.entries(openingHours);
+console.log(entryList);
+//to print array element using destructuring
+for (let [day, { open, close }] of entryList) {
+  console.log(`On ${day}: We open at ${open} and close at ${close}`);
 }
+
+*/
