@@ -3464,4 +3464,63 @@ for (let [day, { open, close }] of entryList) {
   console.log(`On ${day}: We open at ${open} and close at ${close}`);
 }
 
+
+
+   SETS    :            COLLECTION OF UNIQUE VALUES
+
+// set stores only unique values not repeated values
+let itemSet = new Set([1, 2, 3, 1, 3, 3, 8, 6, 7, 7, 6, 5, 4, 4, 1]);
+console.log(itemSet);
+console.log(typeof itemSet);
+// to get set length
+console.log(itemSet.size);
+// to know whether value exist or not
+console.log(itemSet.has(10));
+console.log(itemSet.has(8));
+// to add unique value
+itemSet.add(9);
+console.log(itemSet);
+// to delete item from set
+itemSet.delete(9);
+console.log(itemSet);
+
+// Set are iterables
+for (let item of itemSet) {
+  console.log(item);
+}
+
+// we can also pass a string to set object
+let str = new Set('PROGRAMMING');
+console.log(str);
+for (let item of str) {
+  console.log(item);
+}
 */
+
+let openingHours = {
+  sunday: {
+    open: '9am',
+    close: '10pm',
+  },
+  monday: {
+    open: '10am',
+    close: '12pm',
+  },
+  tuesday: {
+    open: '12pm',
+    close: '3pm',
+  },
+  wednesday: {
+    open: '11am',
+    close: '2pm',
+  },
+};
+
+let hotel = {
+  name: 'Taj hotel',
+  Location: 'Mumbai',
+  categories: ['Veg', 'Non-Veg', 'Italian', 'Sea-Food'],
+  mainMenu: ['foodA', 'foodB', 'foodC'],
+  specialFood: ['SPECIAL_FOOD-A', 'SPECIAL_FOOD-B', 'SPECIAL_FOOD-C'],
+  openingHours,
+};
