@@ -3521,6 +3521,27 @@ console.log(restaurantMap.get(false));
 //to get the map size
 console.log(restaurantMap.size);
 
+
+// modern javascript and tooling
+//IIFE- Immediately invoked function expression
+let resultIIFE = (function () {
+  console.log('run.............');
+  let orders = [];
+  let addToCart = function (product, quantity) {
+    console.log(`${product} ordered ${quantity}`);
+    orders.push({ product, quantity });
+  };
+  return {
+    orders,
+    addToCart,
+  };
+})();
+
+resultIIFE.addToCart('BIRYANI', 10);
+resultIIFE.addToCart('PIZZA', 5);
+console.log(resultIIFE.orders);
+
+
 */
 
 //******************************************************************************************************************************************************************************* */
@@ -3581,21 +3602,31 @@ console.log(data);
 console.log('ending...');
 */
 
-// modern javascript and tooling
-//IIFE- Immediately invoked function expression
-let resultIIFE = (function () {
-  console.log('run.............');
-  let orders = [];
-  let addToCart = function (product, quantity) {
-    console.log(`${product} ordered ${quantity}`);
-    orders.push({ product, quantity });
-  };
-  return {
-    orders,
-    addToCart,
-  };
-})();
+//closures : it means inner function has an access to the variables and parameters of outer function even after outer function has returned
 
-resultIIFE.addToCart('BIRYANI', 10);
-resultIIFE.addToCart('PIZZA', 5);
-console.log(resultIIFE.orders);
+// let outerFunction = function (outerParameter) {
+//   let outerVariable = 'outer';
+//   let innerFunction = function () {
+//     console.log(outerVariable);
+//     console.log(outerParameter);
+//   };
+//   return innerFunction;
+// };
+// let innerFunc = outerFunction('outer-parameter');
+// innerFunc();
+
+//closure does not make separate copy of outer variable
+// It just reference them
+// let counter = function () {
+//   let count = 0;
+//   console.log('Initial count is: ', count);
+//   let innerFunction = function () {
+//     return (count = count + 1);
+//   };
+//   return innerFunction;
+// };
+// let innerCounter = counter();
+// console.log(innerCounter());
+// // now it is accessing the same inner counter function
+// console.log(innerCounter());
+// console.log(innerCounter());
